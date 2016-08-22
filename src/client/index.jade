@@ -1,0 +1,6 @@
+//output: ../../client/index.html
+body(ng-app='game' ng-cloak)
+  div(ng-controller='gameController as vm')
+    ul
+      li(ng-repeat='log in vm.logs') {{log._id}}
+      

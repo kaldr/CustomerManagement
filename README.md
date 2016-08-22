@@ -25,3 +25,6 @@ Jade is a perfect html compile language.
 
 ### Stylus
 Stylus is a perfect css compile language.
+
+### how to run
+`meteor `
