@@ -1,3 +1,6 @@
+# easy recalling branch
+This branch is a branch for the current easy version.
+
 # CustomerManagement
 This is one of the important part of ERP project
 
@@ -12,10 +15,10 @@ Our new CM extends the old CRM concept. In the old time, CRM system provides ord
 ### Electron
 ### Ionic
 
-## Code 
+## Code
 ### Coffee
 Although meteor has made itself a future framework which can adapt typescript in it, I still use coffee to enhance our development speed.
-Some code style like 'import', 'other arguments' and 'export', which coffee is not perfectly adopted with the original javascript, are shown in meteor and can use another way to adapt to typescript. 
+Some code style like 'import', 'other arguments' and 'export', which coffee is not perfectly adopted with the original javascript, are shown in meteor and can use another way to adapt to typescript.
 
 ### Jade
 Jade is a perfect html compile language.
