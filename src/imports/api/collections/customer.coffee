@@ -1,3 +1,3 @@
 {Mongo}=require 'meteor/mongo'
-Parties=new Mongo.Collection 'parties'
-exports["AccessLog"]=Parties
+CustomerProfile=new Mongo.Collection 'CustomerProfile'#,{idGeneration:'MONGO'}
+exports.CustomerProfile=CustomerProfile
