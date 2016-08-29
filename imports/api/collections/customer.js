@@ -1,7 +1,7 @@
-var Mongo, Parties;
+var CustomerProfile, Mongo;
 
 Mongo = require('meteor/mongo').Mongo;
 
-Parties = new Mongo.Collection('parties');
+CustomerProfile = new Mongo.Collection('CustomerProfile');
 
-exports["AccessLog"] = Parties;
+exports.CustomerProfile = CustomerProfile;
