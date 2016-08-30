@@ -1,0 +1,22 @@
+//output:../../../../../../imports/ui/dashboard/components/basicCustomerData/basicCustomerData.html
+.basicCustomerData(flex=100 layout='row' layout-wrap layout-align='space-around center')
+  .customer_count(align='center') 
+    .num_with_button(layout='row' layout-align='center center')
+      .num 30203
+      md-button.md-fab.md-primary.md-mini.basicDashboardButton(aria-label="Eat cake")
+        i.fa.fa-plus
+        md-tooltip(md-direction='right') 添加会员
+    .info 总会员数量
+    
+  .customer_icon(align='center' flex-order-xs=-1 flex-xs=100)
+    i.fa.fa-male.font(ng-repeat='f in basicCustomerData.fa')
+    md-tooltip(md-direction='bottom') 每增加500人，这里的小人会增加一个
+    
+  .customer_vistied(align='center')
+    .num_with_button(layout='row' layout-align='center center')
+      .num 335
+      md-button.md-fab.md-warn.md-mini.basicDashboardButton(aria-label="Eat cake")
+        i.fa.fa-tasks
+        md-tooltip(md-direction='right') 分配任务
+    .info 本周已经回访
+  

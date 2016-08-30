@@ -1,0 +1,24 @@
+
+<div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="space-around center" class="basicCustomerData">
+  <div align="center" class="customer_count"> 
+    <div layout="row" layout-align="center center" class="num_with_button">
+      <div class="num">30203</div>
+      <md-button aria-label="Eat cake" class="md-fab md-primary md-mini basicDashboardButton"><i class="fa fa-plus"></i>
+        <md-tooltip md-direction="right">添加会员</md-tooltip>
+      </md-button>
+    </div>
+    <div class="info">总会员数量</div>
+  </div>
+  <div align="center" flex-order-xs="-1" flex-xs="100" class="customer_icon"><i ng-repeat="f in basicCustomerData.fa" class="fa fa-male font"></i>
+    <md-tooltip md-direction="bottom">每增加500人，这里的小人会增加一个</md-tooltip>
+  </div>
+  <div align="center" class="customer_vistied">
+    <div layout="row" layout-align="center center" class="num_with_button">
+      <div class="num">335</div>
+      <md-button aria-label="Eat cake" class="md-fab md-warn md-mini basicDashboardButton"><i class="fa fa-tasks"></i>
+        <md-tooltip md-direction="right">分配任务</md-tooltip>
+      </md-button>
+    </div>
+    <div class="info">本周已经回访</div>
+  </div>
+</div>
