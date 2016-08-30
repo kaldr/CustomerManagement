@@ -13,8 +13,6 @@ basicCustomerDataCtrl = (function() {
     'ngInject';
     $reactive(this).attach($scope);
     this.fa = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    console.log(this.fa);
-    console.log(this);
   }
 
   return basicCustomerDataCtrl;

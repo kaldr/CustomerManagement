@@ -4,8 +4,7 @@ md-toolbar.navi(md-scroll-shrink)
   .md-toolbar-tools.navi-tools(layout="row" layout-align='center center')
       md-button.navi-tools-button(ng-repeat='(sref,navi) in cm.navigation' ui-sref='{{sref}}' name='{{sref}}') 
         i.fa(ng-class='navi.iconClass')
-        span.navi-txt(hide-xs) {{navi.name}}
-        p.navi-txt(hide-md) {{navi.name}}
+        span.navi-txt() {{navi.name}}
         
 #mainView(flex ui-view='CM' layout='column' layout-fill flex-order-xs="-1")
 

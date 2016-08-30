@@ -1,9 +1,7 @@
 
 <md-toolbar md-scroll-shrink="md-scroll-shrink" class="navi">
   <div layout="row" layout-align="center center" class="md-toolbar-tools navi-tools">
-    <md-button ng-repeat="(sref,navi) in cm.navigation" ui-sref="{{sref}}" name="{{sref}}" class="navi-tools-button"> <i ng-class="navi.iconClass" class="fa"></i><span hide-xs="hide-xs" class="navi-txt">{{navi.name}}</span>
-      <p hide-md="hide-md" class="navi-txt">{{navi.name}}</p>
-    </md-button>
+    <md-button ng-repeat="(sref,navi) in cm.navigation" ui-sref="{{sref}}" name="{{sref}}" class="navi-tools-button"> <i ng-class="navi.iconClass" class="fa"></i><span class="navi-txt">{{navi.name}}</span></md-button>
   </div>
 </md-toolbar>
 <div id="mainView" flex="flex" ui-view="CM" layout="column" layout-fill="layout-fill" flex-order-xs="-1"></div>

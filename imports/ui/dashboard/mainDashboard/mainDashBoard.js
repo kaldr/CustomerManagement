@@ -1,10 +1,8 @@
-var angular, angularMaterial, angularMeteor, basicCustomerData, mainDashboardCtrl, name;
+var angular, angularMeteor, basicCustomerData, mainDashboardCtrl, name;
 
 angular = require('angular');
 
 angularMeteor = require('angular-meteor');
-
-angularMaterial = require('angular-material');
 
 
 import template from './mainDashboard.html'
@@ -21,7 +19,7 @@ mainDashboardCtrl = (function() {
 
 name = 'mainDashboard';
 
-exports.MainDashboard = angular.module(name, [angularMeteor, angularMaterial, basicCustomerData]).component(name, {
+exports.MainDashboard = angular.module(name, [angularMeteor, basicCustomerData]).component(name, {
   template: template,
   controllerAs: name,
   controller: mainDashboardCtrl

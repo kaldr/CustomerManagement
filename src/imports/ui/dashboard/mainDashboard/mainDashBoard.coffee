@@ -1,6 +1,6 @@
 angular=require 'angular'
 angularMeteor=require 'angular-meteor'
-angularMaterial=require 'angular-material'
+#angularMaterial=require 'angular-material'
 
 `
 import template from './mainDashboard.html'
@@ -12,13 +12,13 @@ class mainDashboardCtrl
 
 name='mainDashboard'
 exports.MainDashboard=angular.module name,[
-  angularMeteor
-  angularMaterial
-  basicCustomerData
+    angularMeteor
+    #angularMaterial
+    basicCustomerData
 ]
     .component name,{
-      template:template
-      controllerAs:name
-      controller:mainDashboardCtrl
+        template:template
+        controllerAs:name
+        controller:mainDashboardCtrl
     }
     .name
