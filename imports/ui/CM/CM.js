@@ -16,7 +16,6 @@ import template from './CM.html';
 
 CMCtrl = (function() {
   function CMCtrl($reactive, $scope, $state, $location) {
-    'ngInject';
     $reactive(this).attach($scope);
     this.currentNavItem = $location.path().split("/")[1];
     if (!this.currentNavItem) {
@@ -54,7 +53,7 @@ config = function($stateProvider, $locationProvider, $urlRouterProvider) {
     url: '/mainDashboard',
     views: {
       CM: {
-        template: '<main-dashboard></main-dashboard>'
+        template: '<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
       }
     }
   }).state("customerManagement", {

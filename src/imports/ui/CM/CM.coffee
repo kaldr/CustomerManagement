@@ -12,7 +12,6 @@ uiRouter=require "angular-ui-router"
 #class=====================================================================
 class CMCtrl
     constructor:($reactive,$scope,$state,$location)->
-        'ngInject'
         $reactive this
             .attach $scope
         this.currentNavItem=$location.path().split("/")[1]
@@ -45,7 +44,7 @@ config=($stateProvider,$locationProvider,$urlRouterProvider)->
             url:'/mainDashboard'
             views:
                 CM:
-                    template:'<main-dashboard></main-dashboard>'
+                    template:'<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
 
         .state "customerManagement",
             abstract:true
