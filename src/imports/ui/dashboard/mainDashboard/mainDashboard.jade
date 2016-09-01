@@ -1,5 +1,12 @@
 //output: ../../../../../imports/ui/dashboard/mainDashboard/mainDashboard.html
-basic-customer-data.basicCustomerData(layout-wrap layout='row' layout-align='space-around center')
-basic-customer-statistic.basic-customer-statistic(layout='row' layout-xs='column' layout-align='space-around center')
+basic-customer-data.basicCustomerData(flex='none' layout-wrap layout='row' layout-align='space-around center')
+basic-customer-statistic.basic-customer-statistic(flex='none' layout='row'  layout-align='center end')
 
-  
+.recentData(layout-gt-sm='row' layout='column' layout-wrap-xs)
+  recent-task-complish-status.recentTaskComplishStatus(flex-gt-sm=33)
+  md-divider
+  recent-user-task.recentUserTask(flex-gt-sm=33)
+  md-divider
+  recent-joint-customer.recentJointCustomer(flex-gt-sm=33)
+
+    

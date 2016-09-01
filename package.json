@@ -19,6 +19,7 @@
     "c3": "^0.4.9",
     "c3-angularjs": "^1.0.7",
     "meteor-node-stubs": "^0.2.3",
+    "nib": "^1.1.2",
     "underscore": "^1.8.3"
   }
 }

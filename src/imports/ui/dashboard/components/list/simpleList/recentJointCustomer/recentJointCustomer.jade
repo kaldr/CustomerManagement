@@ -1,0 +1,14 @@
+//output:../../../../../../../../imports/ui/dashboard/components/list/simpleList/recentJointCustomer/recentJointCustomer.html
+md-toolbar(layout='row' md-colors='{background:"blue-grey-100"}')
+  .md-toolbar-tools
+    span 顾客
+md-content
+  md-list(flex='noshrink')
+    md-subheader.md-no-sticky 李森松
+    md-list-item.md-3-line(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null')
+      .md-list-item-text(layout='column')
+        h3 黄宇
+        h4 好人
+        p 这是一场没有解决的表扬
+  md-divider
+    

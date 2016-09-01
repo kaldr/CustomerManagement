@@ -1,23 +1,29 @@
-angular=require 'angular'
-angularMeteor=require 'angular-meteor'
+angular = require 'angular'
+angularMeteor = require 'angular-meteor'
 `
 import template from './mainDashboard.html'
 `
-{basicCustomerData}=require '../components/basicCustomerData/basicCustomerData'
-{basicCustomerStatistic}=require '../components/basicCustomerStatistic/basicCustomerStatistic'
+{basicCustomerData} = require '../components/basicCustomerData/basicCustomerData'
+{basicCustomerStatistic} = require '../components/basicCustomerStatistic/basicCustomerStatistic'
+{recentJointCustomer} = require '../components/list/simpleList/recentJointCustomer/recentJointCustomer'
+{recentTaskComplishStatus} = require '../components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus'
+{recentUserTask} = require '../components/list/simpleList/recentUserTask/recentUserTask'
 
 class mainDashboardCtrl
 
 
-name='mainDashboard'
-exports.MainDashboard=angular.module name,[
+name = 'mainDashboard'
+exports.MainDashboard = angular.module name, [
     angularMeteor
     basicCustomerData
     basicCustomerStatistic
+    recentJointCustomer
+    recentTaskComplishStatus
+    recentUserTask
 ]
-    .component name,{
-        template:template
-        controllerAs:name
-        controller:mainDashboardCtrl
+    .component name, {
+        template: template
+        controllerAs: name
+        controller: mainDashboardCtrl
     }
     .name

@@ -4,8 +4,6 @@ angular = require('angular');
 
 angularMeteor = require('angular-meteor');
 
-require('c3-angularjs');
-
 basicChart = require('../basicChart/basicChart').basicChart;
 
 import template from './basicCustomerStatistic.html';
@@ -17,22 +15,42 @@ basicCustomerStatisticCtrl = (function() {
     $reactive(this).attach($scope);
     this.data = {
       types: {
-        second: 'area-spline'
+        game: 'spline',
+        second: 'bar'
       },
-      columns: [['game', 30, 200, 100, 400, 150, 250], ['second', 50, 20, 10, 40, 15, 25]],
-      axes: {
-        data2: 'y2'
+      columns: [['game', 30, 200, 100, 400, 150, 250, 30, 200, 100, 400, 150, 250, 30, 200, 100, 400, 150, 250], ['second', 50, 20, 10, 40, 15, 25, 50, 20, 10, 100, 400, 150, 250, 30, 10, 40, 15, 25, 50, 20, 10, 40, 15, 25]],
+      colors: {
+        game: "#546E7A",
+        second: "#B0BEC5"
       }
     };
     this.axis = {
+      x: {
+        show: false
+      },
+      y: {
+        show: false
+      },
       y2: {
-        show: true,
+        show: false,
         tick: false
       }
     };
     this.dada = {
+      zoom: {
+        enabled: true
+      },
       data: this.data,
-      axis: this.axis
+      axis: this.axis,
+      size: {
+        height: 50
+      },
+      legend: {
+        show: false
+      },
+      point: {
+        r: 4
+      }
     };
     $scope.chart = null;
     $scope.config = {};
@@ -78,7 +96,7 @@ basicCustomerStatisticCtrl = (function() {
 
 name = 'basicCustomerStatistic';
 
-exports.basicCustomerStatistic = angular.module(name, [angularMeteor, 'c3-angularjs', basicChart]).component(name, {
+exports.basicCustomerStatistic = angular.module(name, [angularMeteor, basicChart]).component(name, {
   template: template,
   controller: basicCustomerStatisticCtrl,
   controllerAs: name

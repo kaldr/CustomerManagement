@@ -1,7 +1,9 @@
 
-<md-toolbar flex="noshrink" class="navi">
-  <div layout="row" layout-align="center center" class="md-toolbar-tools navi-tools">
-    <md-button ng-repeat="(sref,navi) in cm.navigation" ui-sref="{{sref}}" name="{{sref}}" class="navi-tools-button"> <i ng-class="navi.iconClass" hide-gt-xs="hide-gt-xs" class="fa"></i><span class="navi-txt">{{navi.name}}</span></md-button>
+<md-toolbar md-scroll-shrink="md-scroll-shrink" md-colors="{background:'grey-900'}" class="navi">
+  <div layout="row" layout-align="left center" layout-align-xs="space-around center" class="md-toolbar-tools navi-tools">
+    <h2 hide-xs="hide-xs"><span>客户维护系统</span></h2><span flex="flex" hide-xs="hide-xs"></span>
+    <md-button ng-repeat="(sref,navi) in cm.navigation" ui-sref="{{sref}}" name="{{sref}}" class="navi-tools-button"> <i ng-class="navi.iconClass" hide-gt-xs="hide-gt-xs" class="fa"></i><span class="navi-txt">{{navi.name}}</span></md-button><span flex="5" hide-xs="hide-xs"></span>
+    <md-button flex-order="10" md-colors="{background:'blue-grey-500'}" class="md-fab md-mini navi-tools-search-button"><i class="fa fa-search"></i></md-button>
   </div>
 </md-toolbar>
-<div id="mainView" flex="flex" ui-view="CM" layout-wrap="layout-wrap" layout="column" layout-fill="layout-fill" flex-order-xs="-1"></div>
+<md-content id="mainView" flex="flex" ui-view="CM" layout="column" layout-fill="layout-fill" flex-order-xs="-1"></md-content>

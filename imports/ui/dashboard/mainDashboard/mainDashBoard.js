@@ -1,4 +1,4 @@
-var angular, angularMeteor, basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name;
+var angular, angularMeteor, basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name, recentJointCustomer, recentTaskComplishStatus, recentUserTask;
 
 angular = require('angular');
 
@@ -12,6 +12,12 @@ basicCustomerData = require('../components/basicCustomerData/basicCustomerData')
 
 basicCustomerStatistic = require('../components/basicCustomerStatistic/basicCustomerStatistic').basicCustomerStatistic;
 
+recentJointCustomer = require('../components/list/simpleList/recentJointCustomer/recentJointCustomer').recentJointCustomer;
+
+recentTaskComplishStatus = require('../components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus').recentTaskComplishStatus;
+
+recentUserTask = require('../components/list/simpleList/recentUserTask/recentUserTask').recentUserTask;
+
 mainDashboardCtrl = (function() {
   function mainDashboardCtrl() {}
 
@@ -21,7 +27,7 @@ mainDashboardCtrl = (function() {
 
 name = 'mainDashboard';
 
-exports.MainDashboard = angular.module(name, [angularMeteor, basicCustomerData, basicCustomerStatistic]).component(name, {
+exports.MainDashboard = angular.module(name, [angularMeteor, basicCustomerData, basicCustomerStatistic, recentJointCustomer, recentTaskComplishStatus, recentUserTask]).component(name, {
   template: template,
   controllerAs: name,
   controller: mainDashboardCtrl

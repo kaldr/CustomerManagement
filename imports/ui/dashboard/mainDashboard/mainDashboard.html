@@ -1,3 +1,10 @@
 
-<basic-customer-data layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
-<basic-customer-statistic layout="row" layout-xs="column" layout-align="space-around center" class="basic-customer-statistic"></basic-customer-statistic>
+<basic-customer-data flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
+<basic-customer-statistic flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
+<div layout-gt-sm="row" layout="column" layout-wrap-xs="layout-wrap-xs" class="recentData">
+  <recent-task-complish-status flex-gt-sm="33" class="recentTaskComplishStatus"></recent-task-complish-status>
+  <md-divider></md-divider>
+  <recent-user-task flex-gt-sm="33" class="recentUserTask"></recent-user-task>
+  <md-divider></md-divider>
+  <recent-joint-customer flex-gt-sm="33" class="recentJointCustomer"></recent-joint-customer>
+</div>

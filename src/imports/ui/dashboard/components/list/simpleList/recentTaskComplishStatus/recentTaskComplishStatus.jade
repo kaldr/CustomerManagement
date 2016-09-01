@@ -1,0 +1,17 @@
+//output:../../../../../../../../imports/ui/dashboard/components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus.html
+md-toolbar(layout='row' md-colors='{background:"blue-grey-100"}')
+  .md-toolbar-tools
+    span 任务
+
+md-content
+  md-list
+    md-subheader.md-no-sticky 今日完成情况
+    basic-chart(id='taskStatus' config='recentTaskComplishStatus.chart')
+    md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null')
+      .md-list-item-text(layout='column')
+        h3 黄宇
+        h4 好人
+        p 这是一场没有解决的表扬
+    md-divider
+
+      
