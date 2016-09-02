@@ -2,6 +2,9 @@
 name = 'recentTaskComplishStatus'
 
 class recentTaskComplishStatusCtrl
+  closeList: (element) ->
+    showRecentTaskComplishStatus = false
+
   constructor: ($reactive, $scope) ->
     $reactive this
       .attach $scope
@@ -24,10 +27,12 @@ class recentTaskComplishStatusCtrl
     this.complishRate = 85.2
     this.chart =
       data:
-        columns: [['data', this.complishRate, 3, 5, 1]]
+        columns: [
+          ['data', this.complishRate]
+        ]
         type: 'gauge'
       color:
-        pattern: ['#FB8C00','#FF9800', "#FFA726","#FFB74D"]
+        pattern: ['#0277BD','#0288D1', "#039BE5","#03A9F4"]
 exports[name] = angular.module name, []
   .component name,
     template: template

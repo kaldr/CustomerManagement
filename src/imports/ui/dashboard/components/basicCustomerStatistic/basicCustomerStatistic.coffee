@@ -18,8 +18,8 @@ class basicCustomerStatisticCtrl
         ['second', 50, 20, 10, 40, 15, 25, 50, 20, 10, 100, 400, 150, 250, 30, 10, 40, 15, 25, 50, 20, 10, 40, 15, 25]
       ]
       colors:
-        game: "#546E7A"
-        second: "#B0BEC5"
+        game: "#FFD600"
+        second: "#0277BD"
 
     this.axis =
       x:

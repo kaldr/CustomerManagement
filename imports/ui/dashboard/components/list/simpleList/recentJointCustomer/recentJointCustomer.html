@@ -1,8 +1,47 @@
 
-<md-toolbar layout="row" md-colors="{background:&quot;blue-grey-100&quot;}">
-  <div class="md-toolbar-tools"><span>顾客</span></div>
+<md-toolbar layout="row" md-colors="{background:&quot;grey-200&quot;}">
+  <div layout="row" layout-align="space-between center" class="md-toolbar-tools">
+    <md-menu flex="flex" align="left">
+      <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
+        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin">menu</md-icon>
+        <md-tooltip>菜单</md-tooltip>
+      </md-button>
+      <md-menu-content width="3">
+        <md-menu-item>
+          <md-button md-menu-align-target="md-menu-align-target" ng-click="mainDashboard.closeList()"> 
+            <md-icon>visibility_off</md-icon>隐藏
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button> 
+            <md-icon>visibility</md-icon>显示
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu><span flex="flex" align="center">顾客</span>
+    <md-menu flex="flex" align="right">
+      <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
+        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">dashboard</md-icon>
+        <md-tooltip>显示</md-tooltip>
+      </md-button>
+      <md-menu-content width="3">
+        <md-menu-item>
+          <md-button md-menu-align-target="md-menu-align-target"> 
+            <md-icon>visibility_off</md-icon>隐藏
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button> 
+            <md-icon>visibility</md-icon>显示
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
 </md-toolbar>
 <md-content>
+  <md-subheader class="md-no-sticky">统计</md-subheader>
+  <basic-chart id="customerChart" config="recentJointCustomer.chart"></basic-chart>
   <md-list flex="noshrink">
     <md-subheader class="md-no-sticky">李森松</md-subheader>
     <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line">
@@ -13,5 +52,4 @@
       </div>
     </md-list-item>
   </md-list>
-  <md-divider></md-divider>
 </md-content>

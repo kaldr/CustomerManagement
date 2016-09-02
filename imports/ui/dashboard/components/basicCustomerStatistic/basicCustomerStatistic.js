@@ -20,8 +20,8 @@ basicCustomerStatisticCtrl = (function() {
       },
       columns: [['game', 30, 200, 100, 400, 150, 250, 30, 200, 100, 400, 150, 250, 30, 200, 100, 400, 150, 250], ['second', 50, 20, 10, 40, 15, 25, 50, 20, 10, 100, 400, 150, 250, 30, 10, 40, 15, 25, 50, 20, 10, 40, 15, 25]],
       colors: {
-        game: "#546E7A",
-        second: "#B0BEC5"
+        game: "#FFD600",
+        second: "#0277BD"
       }
     };
     this.axis = {

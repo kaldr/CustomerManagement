@@ -1,6 +1,6 @@
 //output:../../../../imports/ui/CM/CM.html
 
-md-toolbar.navi(md-scroll-shrink md-colors="{background:'grey-900'}")
+md-toolbar.navi(md-scroll-shrink)
   .md-toolbar-tools.navi-tools(layout="row" layout-align='left center' layout-align-xs='space-around center')
       h2(hide-xs)
         span 客户维护系统
@@ -9,6 +9,6 @@ md-toolbar.navi(md-scroll-shrink md-colors="{background:'grey-900'}")
         i.fa(ng-class='navi.iconClass' hide-gt-xs)
         span.navi-txt {{navi.name}}
       span(flex=5 hide-xs)
-      md-button.md-fab.md-mini.navi-tools-search-button(flex-order=10 md-colors="{background:'blue-grey-500'}")
+      md-button.md-fab.md-mini.navi-tools-search-button(flex-order=10 md-colors="{background:'grey-800'}")
         i.fa.fa-search
 md-content#mainView(flex ui-view='CM' layout='column' layout-fill flex-order-xs="-1")

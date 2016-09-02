@@ -1,8 +1,10 @@
-var angular, angularMeteor, basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name, recentJointCustomer, recentTaskComplishStatus, recentUserTask;
+var angular, angularMeteor, basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name, ngAnimate, recentJointCustomer, recentTaskComplishStatus, recentUserTask;
 
 angular = require('angular');
 
 angularMeteor = require('angular-meteor');
+
+ngAnimate = require('angular-animate');
 
 
 import template from './mainDashboard.html'
@@ -19,7 +21,13 @@ recentTaskComplishStatus = require('../components/list/simpleList/recentTaskComp
 recentUserTask = require('../components/list/simpleList/recentUserTask/recentUserTask').recentUserTask;
 
 mainDashboardCtrl = (function() {
-  function mainDashboardCtrl() {}
+  function mainDashboardCtrl($reactive, $scope) {
+    $reactive(this).attach($scope);
+  }
+
+  mainDashboardCtrl.prototype.closeList = function($element) {
+    return console.log($element);
+  };
 
   return mainDashboardCtrl;
 
@@ -27,7 +35,7 @@ mainDashboardCtrl = (function() {
 
 name = 'mainDashboard';
 
-exports.MainDashboard = angular.module(name, [angularMeteor, basicCustomerData, basicCustomerStatistic, recentJointCustomer, recentTaskComplishStatus, recentUserTask]).component(name, {
+exports.MainDashboard = angular.module(name, [angularMeteor, ngAnimate, basicCustomerData, basicCustomerStatistic, recentJointCustomer, recentTaskComplishStatus, recentUserTask]).component(name, {
   template: template,
   controllerAs: name,
   controller: mainDashboardCtrl

@@ -1,7 +1,6 @@
 //out: ../../../../imports/ui/CM/CM.css,compress:true
-md-divider
-  margin-bottom 0
 md-toolbar.navi
+  background-color:#000
   .navi-tools
     .navi-tools-button
       i
@@ -9,8 +8,11 @@ md-toolbar.navi
           font-size:0.9em
       span.navi-txt
         margin-left 5px
-md-button.navi-tools-search-button
-  i.fa.fa-search
-    font-size:1.3em
+.navi
+  .navi-tools
+    md-button.navi-tools-search-button
+      margin-right 20px
+      i.fa.fa-search
+        font-size:1.3em
 
 @import '../dashboard/mainDashboard/mainDashboard.styl'

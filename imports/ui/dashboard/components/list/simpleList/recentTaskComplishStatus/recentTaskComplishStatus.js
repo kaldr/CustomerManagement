@@ -4,6 +4,11 @@ var name, recentTaskComplishStatusCtrl;
 name = 'recentTaskComplishStatus';
 
 recentTaskComplishStatusCtrl = (function() {
+  recentTaskComplishStatusCtrl.prototype.closeList = function(element) {
+    var showRecentTaskComplishStatus;
+    return showRecentTaskComplishStatus = false;
+  };
+
   function recentTaskComplishStatusCtrl($reactive, $scope) {
     $reactive(this).attach($scope);
     this.tasks = {
@@ -29,11 +34,11 @@ recentTaskComplishStatusCtrl = (function() {
     this.complishRate = 85.2;
     this.chart = {
       data: {
-        columns: [['data', this.complishRate, 3, 5, 1]],
+        columns: [['data', this.complishRate]],
         type: 'gauge'
       },
       color: {
-        pattern: ['#FB8C00', '#FF9800', "#FFA726", "#FFB74D"]
+        pattern: ['#0277BD', '#0288D1', "#039BE5", "#03A9F4"]
       }
     };
   }

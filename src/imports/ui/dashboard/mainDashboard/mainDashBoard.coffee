@@ -1,5 +1,6 @@
 angular = require 'angular'
 angularMeteor = require 'angular-meteor'
+ngAnimate = require 'angular-animate'
 `
 import template from './mainDashboard.html'
 `
@@ -10,11 +11,16 @@ import template from './mainDashboard.html'
 {recentUserTask} = require '../components/list/simpleList/recentUserTask/recentUserTask'
 
 class mainDashboardCtrl
-
+  constructor: ($reactive, $scope) ->
+    $reactive this
+      .attach $scope
+  closeList: ($element) ->
+    console.log $element
 
 name = 'mainDashboard'
 exports.MainDashboard = angular.module name, [
     angularMeteor
+    ngAnimate
     basicCustomerData
     basicCustomerStatistic
     recentJointCustomer

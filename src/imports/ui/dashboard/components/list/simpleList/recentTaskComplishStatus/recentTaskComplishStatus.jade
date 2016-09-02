@@ -1,17 +1,42 @@
 //output:../../../../../../../../imports/ui/dashboard/components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus.html
-md-toolbar(layout='row' md-colors='{background:"blue-grey-100"}')
-  .md-toolbar-tools
-    span 任务
+md-toolbar(layout='row' md-colors='{background:"grey-200"}')
+  .md-toolbar-tools(layout='row' layout-align='space-between center')
+    md-menu(flex align='left')
+      md-button.md-icon-button(ng-click='$mdOpenMenu()')
+        md-icon(md-colors="{color:'grey-500'}" md-menu-origin) menu
+        md-tooltip 菜单
+      md-menu-content(width=3)
+        md-menu-item
+          md-button(md-menu-align-target ng-click='recentTaskComplishStatus.closeList()') 
+            md-icon visibility_off
+            |隐藏
+        md-menu-item
+          md-button 
+            md-icon visibility
+            |显示
+    span(flex  align='center') 任务
+    md-menu(flex align='right')
+      md-button.md-icon-button(ng-click='$mdOpenMenu()')
+        md-icon(md-colors="{color:'grey-500'}" md-menu-origin ng-click='$mdOpenMenu()') dashboard
+        md-tooltip 显示
+      md-menu-content(width=3)
+        md-menu-item
+          md-button(md-menu-align-target) 
+            md-icon visibility_off
+            |隐藏
+        md-menu-item
+          md-button 
+            md-icon visibility
+            |显示
 
 md-content
-  md-list
-    md-subheader.md-no-sticky 今日完成情况
-    basic-chart(id='taskStatus' config='recentTaskComplishStatus.chart')
-    md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null')
+  md-subheader.md-no-sticky 今日完成情况
+  basic-chart(id='taskStatus' config='recentTaskComplishStatus.chart' )
+  md-list()  
+    md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null' )
       .md-list-item-text(layout='column')
         h3 黄宇
         h4 好人
         p 这是一场没有解决的表扬
-    md-divider
 
       

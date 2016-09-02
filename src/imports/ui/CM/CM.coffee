@@ -1,76 +1,76 @@
 #basic modules
-angular=require 'angular'
-angularMeteor=require 'angular-meteor'
-ngMaterial=require 'angular-material'
-uiRouter=require "angular-ui-router"
+angular = require 'angular'
+angularMeteor = require 'angular-meteor'
+ngMaterial = require 'angular-material'
+uiRouter = require "angular-ui-router"
 #CM modules
-{MainDashboard}=require "../dashboard/mainDashboard/mainDashboard"
-{customerManagement}=require '../customerManagement/customerManagement/customerManagement'
+{MainDashboard} = require "../dashboard/mainDashboard/mainDashboard"
+{customerManagement} = require '../customerManagement/customerManagement/customerManagement'
 
 #basic html template
 `import template from './CM.html'`
 #class=====================================================================
 class CMCtrl
-    constructor:($reactive,$scope,$state,$location)->
+    constructor: ($reactive, $scope, $state, $location) ->
         $reactive this
             .attach $scope
-        this.currentNavItem=$location.path().split("/")[1]
-        this.currentNavItem='mainDashboard'if !this.currentNavItem
+        this.currentNavItem = $location.path().split("/")[1]
+        this.currentNavItem = 'mainDashboard'if ! this.currentNavItem
         #$state.transitionTo this.currentNavItem
-        this.navigation=
+        this.navigation =
             mainDashboard:
-                name:'首页'
-                tooltip:"信息看板"
-                iconClass:'fa-home'
-            'customerManagement.customerProfile':#注意，这个state在customerManagement.coffee里面定义的
-                name:'客户管理'
-                tooltip:"管理客户档案与分配"
-                iconClass:'fa-users'
+                name: '看板'
+                tooltip: "信息看板"
+                iconClass: 'fa-tachometer'
+            'customerManagement.customerProfile': #注意，这个state在customerManagement.coffee里面定义的
+                name: '客户管理'
+                tooltip: "管理客户档案与分配"
+                iconClass: 'fa-users'
             customerOperation:
-                name:"客户维护"
-                tooltip:"回访、礼品和活动等多种维护方式"
-                iconClass:'fa-heartbeat'
+                name: "客户维护"
+                tooltip: "回访、礼品和活动等多种维护方式"
+                iconClass: 'fa-heartbeat'
         #page title
-        this.title='客户关系管理'
+        this.title = '客户关系管理'
 
 #config=====================================================================
-config=($stateProvider,$locationProvider,$urlRouterProvider)->
+config = ($stateProvider, $locationProvider, $urlRouterProvider) ->
     'ngInject'
     $locationProvider.html5Mode true
     $urlRouterProvider.otherwise '/mainDashboard'
     #States
     $stateProvider
         .state 'mainDashboard',
-            url:'/mainDashboard'
+            url: '/mainDashboard'
             views:
                 CM:
-                    template:'<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
+                    template: '<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
 
         .state "customerManagement",
-            abstract:true
-            url:"/customerManagement"
+            abstract: true
+            url: "/customerManagement"
             views:
                 CM:
-                    template:'<customer-management></customer-management>'
+                    template: '<customer-management></customer-management>'
 
         .state "customerOperation",
-            url:"/customerOperation"
+            url: "/customerOperation"
             views:
                 CM:
-                    template:'<customer-operation></customer-operation>'
+                    template: '<customer-operation></customer-operation>'
 
 
 #run=====================================================================
-run=($state,$rootScope)->
+run = ($state, $rootScope) ->
     'ngInject'
     'use strict'
-    $rootScope.$on '$stateChangeSuccess',(event,current)->
-        $rootScope.currentNavItem=$state.current.name
+    $rootScope.$on '$stateChangeSuccess', (event, current) ->
+        $rootScope.currentNavItem = $state.current.name
 
 
 #module exports
-name='cm'
-exports.cm=angular.module name,[
+name = 'cm'
+exports.cm = angular.module name, [
     angularMeteor
     ngMaterial
     uiRouter
@@ -79,9 +79,9 @@ exports.cm=angular.module name,[
 ]
     .config config
     #.run run
-    .component name,{
-        template:template
-        controllerAs:name
-        controller:CMCtrl
+    .component name, {
+        template: template
+        controllerAs: name
+        controller: CMCtrl
     }
     .name

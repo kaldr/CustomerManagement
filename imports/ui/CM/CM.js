@@ -23,9 +23,9 @@ CMCtrl = (function() {
     }
     this.navigation = {
       mainDashboard: {
-        name: '首页',
+        name: '看板',
         tooltip: "信息看板",
-        iconClass: 'fa-home'
+        iconClass: 'fa-tachometer'
       },
       'customerManagement.customerProfile': {
         name: '客户管理',
