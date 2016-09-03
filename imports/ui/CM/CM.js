@@ -39,7 +39,48 @@ CMCtrl = (function() {
       }
     };
     this.title = '客户关系管理';
+    this.famous();
   }
+
+  CMCtrl.prototype.famous = function() {
+    var Engine, colors, context, createSurface, famous, i, layout, modifier, ratios, surfaces;
+    famous = require('famous');
+    Engine = famous.core.Engine;
+    modifier = new famous.modifiers.StateModifier({
+      size: [void 0, 500]
+    });
+    context = Engine.createContext(document.getElementById("famous"));
+    console.log(context);
+    colors = ['rgba(256,0,0,.7)', 'rgba(0,256,0,.7)', 'rgba(0,0,256,0.7)'];
+    ratios = [1, 3, 5];
+    console.log("ratio ok");
+    layout = new famous.views.FlexibleLayout({
+      ratios: ratios,
+      transition: {
+        curve: 'easeInOut',
+        duration: 1000
+      }
+    });
+    console.log('layout ok');
+    createSurface = function(i) {
+      return new famous.core.Surface({
+        size: [void 0, void 0],
+        properties: {
+          backgroundColor: colors[i % 3]
+        }
+      });
+    };
+    surfaces = (function() {
+      var j, ref, results;
+      results = [];
+      for (i = j = 0, ref = ratios.length - 1; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+        results.push(createSurface(i));
+      }
+      return results;
+    })();
+    layout.sequenceFrom(surfaces);
+    return context.add(modifier).add(layout);
+  };
 
   return CMCtrl;
 
@@ -52,7 +93,7 @@ config = function($stateProvider, $locationProvider, $urlRouterProvider) {
   return $stateProvider.state('mainDashboard', {
     url: '/mainDashboard',
     views: {
-      CM: {
+      'cm@': {
         template: '<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
       }
     }
@@ -60,14 +101,14 @@ config = function($stateProvider, $locationProvider, $urlRouterProvider) {
     abstract: true,
     url: "/customerManagement",
     views: {
-      CM: {
+      "cm@": {
         template: '<customer-management></customer-management>'
       }
     }
   }).state("customerOperation", {
     url: "/customerOperation",
     views: {
-      CM: {
+      "cm@": {
         template: '<customer-operation></customer-operation>'
       }
     }
@@ -77,9 +118,14 @@ config = function($stateProvider, $locationProvider, $urlRouterProvider) {
 run = function($state, $rootScope) {
   'ngInject';
   'use strict';
-  return $rootScope.$on('$stateChangeSuccess', function(event, current) {
+  $rootScope.$on('$stateChangeSuccess', function(event, current) {
     return $rootScope.currentNavItem = $state.current.name;
   });
+  return $rootScope.$on('$stateChangeStart', (function(_this) {
+    return function() {
+      return $animate.enabled(false);
+    };
+  })(this));
 };
 
 name = 'cm';

@@ -1,10 +1,5 @@
-var angular, angularMeteor, basicCustomerDataCtrl, name;
-
-angular = require('angular');
-
-angularMeteor = require('angular-meteor');
-
 import template from './basicCustomerData.html';
+var basicCustomerDataCtrl, name;
 
 name = 'basicCustomerData';
 
@@ -19,7 +14,7 @@ basicCustomerDataCtrl = (function() {
 
 })();
 
-exports[name] = angular.module(name, [angularMeteor]).component(name, {
+exports.basicCustomerData = angular.module(name, []).component(name, {
   template: template,
   controllerAs: name,
   controller: basicCustomerDataCtrl

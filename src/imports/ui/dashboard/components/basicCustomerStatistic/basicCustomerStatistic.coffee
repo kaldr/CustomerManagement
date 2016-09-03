@@ -1,5 +1,3 @@
-angular = require 'angular'
-angularMeteor = require 'angular-meteor'
 {basicChart} = require '../basicChart/basicChart'
 `import template from './basicCustomerStatistic.html'`
 
@@ -50,7 +48,9 @@ class basicCustomerStatisticCtrl
     $scope.config.type2 = "spline";
     $scope.config.keys = {"x":"x","value":["data1","data2"]} ;
     config = {} ;
+
     #config.bindto = '#chart';
+
     config.data = {} ;
     config.data.keys = $scope.config.keys;
     config.data.json = $scope.config.data;
@@ -67,13 +67,13 @@ class basicCustomerStatisticCtrl
       type : 'donut',
 
 
+
 #每周维护客人数量
 
 
 name = 'basicCustomerStatistic'
 
 exports.basicCustomerStatistic = angular.module name, [
-  angularMeteor
   basicChart
 ]
   .component name,

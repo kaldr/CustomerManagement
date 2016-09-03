@@ -1,9 +1,8 @@
 
 <basic-customer-data flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
 <basic-customer-statistic flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
-<md-button ng-click="showRecentTaskComplishStatus=!showRecentTaskComplishStatus">关闭</md-button>
-<div layout-gt-sm="row" layout="column" layout-wrap-xs="layout-wrap-xs" ng-init="showRecentTaskComplishStatus=false" class="recentData">
-  <recent-task-complish-status flex-gt-sm="flex-gt-sm" ng-hide="showRecentTaskComplishStatus" class="recentTaskComplishStatus move-left move-left"></recent-task-complish-status>
-  <recent-user-task flex-gt-sm="flex-gt-sm" class="recentUserTask move-left"></recent-user-task>
-  <recent-joint-customer flex-gt-sm="flex-gt-sm" class="recentJointCustomer move-left"></recent-joint-customer>
+<div layout-gt-sm="row" layout="column" layout-wrap-sm="layout-wrap-sm" ng-init="showRecentTaskComplishStatus=false" class="recentData">
+  <recent-task-complish-status flex-gt-sm="33" class="recentTaskComplishStatus move-left"></recent-task-complish-status>
+  <recent-user-task flex-gt-sm="33" class="recentUserTask move-left"></recent-user-task>
+  <recent-joint-customer flex-gt-sm="33" class="recentJointCustomer move-left"></recent-joint-customer>
 </div>

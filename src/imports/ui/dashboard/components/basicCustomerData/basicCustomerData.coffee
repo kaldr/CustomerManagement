@@ -1,5 +1,3 @@
-angular = require 'angular'
-angularMeteor = require 'angular-meteor'
 `import template from './basicCustomerData.html'`
 
 name = 'basicCustomerData'
@@ -11,9 +9,7 @@ class basicCustomerDataCtrl
             .attach $scope
         this.fa = [1..10]
 
-exports[name] = angular.module name, [
-    angularMeteor
-]
+exports.basicCustomerData = angular.module name, []
     .component name,
         template: template
         controllerAs: name

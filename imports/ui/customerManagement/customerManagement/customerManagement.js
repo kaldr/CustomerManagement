@@ -29,14 +29,16 @@ config = function($stateProvider, $urlRouterProvider) {
       customerManagement: {
         template: '<customer-profile></customer-profile>'
       }
-    }
+    },
+    parent: 'customerManagement'
   }).state('customerManagement.customerProfile', {
     url: '',
     views: {
       customerManagement: {
         template: '<customer-profile></customer-profile>'
       }
-    }
+    },
+    parent: 'customerManagement'
   });
 };
 

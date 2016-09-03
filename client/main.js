@@ -1,7 +1,5 @@
-var angular, angularMeteor, cm;
+var angular, cm;
 
 angular = require('angular');
-
-angularMeteor = require('angular-meteor');
 
 cm = require('../imports/ui/CM/CM').cm;

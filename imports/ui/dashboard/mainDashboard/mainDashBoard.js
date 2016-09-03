@@ -1,14 +1,5 @@
-var angular, angularMeteor, basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name, ngAnimate, recentJointCustomer, recentTaskComplishStatus, recentUserTask;
-
-angular = require('angular');
-
-angularMeteor = require('angular-meteor');
-
-ngAnimate = require('angular-animate');
-
-
-import template from './mainDashboard.html'
-;
+import template from './mainDashboard.html';
+var basicCustomerData, basicCustomerStatistic, mainDashboardCtrl, name, recentJointCustomer, recentTaskComplishStatus, recentUserTask;
 
 basicCustomerData = require('../components/basicCustomerData/basicCustomerData').basicCustomerData;
 
@@ -35,7 +26,7 @@ mainDashboardCtrl = (function() {
 
 name = 'mainDashboard';
 
-exports.MainDashboard = angular.module(name, [angularMeteor, ngAnimate, basicCustomerData, basicCustomerStatistic, recentJointCustomer, recentTaskComplishStatus, recentUserTask]).component(name, {
+exports.MainDashboard = angular.module(name, [basicCustomerData, basicCustomerStatistic, recentJointCustomer, recentTaskComplishStatus, recentUserTask]).component(name, {
   template: template,
   controllerAs: name,
   controller: mainDashboardCtrl

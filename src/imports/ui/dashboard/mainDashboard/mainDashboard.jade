@@ -1,8 +1,8 @@
 //output: ../../../../../imports/ui/dashboard/mainDashboard/mainDashboard.html
+
 basic-customer-data.basicCustomerData(flex='none' layout-wrap layout='row' layout-align='space-around center')
 basic-customer-statistic.basic-customer-statistic(flex='none' layout='row'  layout-align='center end')
-md-button(ng-click='showRecentTaskComplishStatus=!showRecentTaskComplishStatus') 关闭
-.recentData(layout-gt-sm='row' layout='column' layout-wrap-xs ng-init="showRecentTaskComplishStatus=false")
-  recent-task-complish-status.recentTaskComplishStatus.move-left(flex-gt-sm ng-hide='showRecentTaskComplishStatus' class='move-left')
-  recent-user-task.recentUserTask.move-left(flex-gt-sm)
-  recent-joint-customer.recentJointCustomer.move-left(flex-gt-sm)
+.recentData(layout-gt-sm='row' layout='column' layout-wrap-sm ng-init="showRecentTaskComplishStatus=false")
+  recent-task-complish-status.recentTaskComplishStatus.move-left(flex-gt-sm=33)
+  recent-user-task.recentUserTask.move-left(flex-gt-sm=33)
+  recent-joint-customer.recentJointCustomer.move-left(flex-gt-sm=33)

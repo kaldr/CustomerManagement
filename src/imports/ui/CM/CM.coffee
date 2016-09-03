@@ -3,6 +3,7 @@ angular = require 'angular'
 angularMeteor = require 'angular-meteor'
 ngMaterial = require 'angular-material'
 uiRouter = require "angular-ui-router"
+
 #CM modules
 {MainDashboard} = require "../dashboard/mainDashboard/mainDashboard"
 {customerManagement} = require '../customerManagement/customerManagement/customerManagement'
@@ -22,6 +23,8 @@ class CMCtrl
                 name: '看板'
                 tooltip: "信息看板"
                 iconClass: 'fa-tachometer'
+
+
             'customerManagement.customerProfile': #注意，这个state在customerManagement.coffee里面定义的
                 name: '客户管理'
                 tooltip: "管理客户档案与分配"
@@ -32,6 +35,35 @@ class CMCtrl
                 iconClass: 'fa-heartbeat'
         #page title
         this.title = '客户关系管理'
+        this.famous()
+    famous: () ->
+      famous = require 'famous'
+      Engine = famous.core.Engine
+      modifier = new famous.modifiers.StateModifier
+        size: [undefined, 500]
+      context = Engine.createContext document.getElementById "famous"
+      console.log context
+      colors = ['rgba(256,0,0,.7)','rgba(0,256,0,.7)','rgba(0,0,256,0.7)']
+
+      ratios = [1, 3, 5]
+      console.log "ratio ok"
+      layout = new famous.views.FlexibleLayout
+        ratios: ratios
+        transition:
+          curve: 'easeInOut'
+          duration: 1000
+      console.log 'layout ok'
+      createSurface = (i) ->
+        new famous.core.Surface
+          size: [undefined, undefined]
+          properties:
+            backgroundColor: colors[i % 3]
+      surfaces = (createSurface i for i in [0..ratios.length - 1])
+      layout.sequenceFrom surfaces
+      context
+        .add modifier
+        .add layout
+
 
 #config=====================================================================
 config = ($stateProvider, $locationProvider, $urlRouterProvider) ->
@@ -43,20 +75,20 @@ config = ($stateProvider, $locationProvider, $urlRouterProvider) ->
         .state 'mainDashboard',
             url: '/mainDashboard'
             views:
-                CM:
+                'cm@':
                     template: '<main-dashboard id="mainDashboard" layout-fill layout="column"></main-dashboard>'
 
         .state "customerManagement",
             abstract: true
             url: "/customerManagement"
             views:
-                CM:
+                "cm@":
                     template: '<customer-management></customer-management>'
 
         .state "customerOperation",
             url: "/customerOperation"
             views:
-                CM:
+                "cm@":
                     template: '<customer-operation></customer-operation>'
 
 
@@ -66,7 +98,8 @@ run = ($state, $rootScope) ->
     'use strict'
     $rootScope.$on '$stateChangeSuccess', (event, current) ->
         $rootScope.currentNavItem = $state.current.name
-
+    $rootScope.$on '$stateChangeStart', () =>
+      $animate.enabled false
 
 #module exports
 name = 'cm'

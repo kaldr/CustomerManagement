@@ -1,8 +1,4 @@
-var angular, angularMeteor, basicChart, basicCustomerStatisticCtrl, name;
-
-angular = require('angular');
-
-angularMeteor = require('angular-meteor');
+var basicChart, basicCustomerStatisticCtrl, name;
 
 basicChart = require('../basicChart/basicChart').basicChart;
 
@@ -96,7 +92,7 @@ basicCustomerStatisticCtrl = (function() {
 
 name = 'basicCustomerStatistic';
 
-exports.basicCustomerStatistic = angular.module(name, [angularMeteor, basicChart]).component(name, {
+exports.basicCustomerStatistic = angular.module(name, [basicChart]).component(name, {
   template: template,
   controller: basicCustomerStatisticCtrl,
   controllerAs: name
