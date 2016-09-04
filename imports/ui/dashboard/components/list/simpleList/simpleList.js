@@ -37,18 +37,18 @@ simpleList = (function() {
   }
 
   simpleList.prototype.hidePanel = function() {
-    return this.panel[this.ID] = 'hidden';
+    return this.panel[this.ID].status = 'hidden';
   };
 
   simpleList.prototype.fullScreenPanel = function() {
-    this.panel[this.ID] = 'fullscreen';
+    this.panel[this.ID].status = 'fullscreen';
     this.lastPanelStatus = 'fullscreen';
     this.loadPanelFullScreen();
     return false;
   };
 
   simpleList.prototype.showPanel = function() {
-    return this.panel[name] = this.lastPanelStatus;
+    return this.panel[name].status = this.lastPanelStatus;
   };
 
   simpleList.prototype.loadPanelFullScreen = function() {
@@ -58,9 +58,14 @@ simpleList = (function() {
     for (n in ref) {
       v = ref[n];
       if (n === this.ID) {
-        results.push(this.panel[n] = 'fullscreen');
+        this.panel[n].status = 'fullscreen';
       } else {
-        results.push(this.panel[n] = 'hidden');
+        this.panel[n].status = 'hidden';
+      }
+      if (n === this.ID) {
+        results.push(this.panel[n].show = true);
+      } else {
+        results.push(this.panel[n].show = false);
       }
     }
     return results;
@@ -72,7 +77,8 @@ simpleList = (function() {
       return function() {
         _this.theme.toolbarColor = config.color === 'grey' ? 'grey-200' : 'grey-100';
         _this.theme.listColor = config.color === 'grey' ? 'grey-100' : 'grey-A100';
-        return _this.theme.title = config.title ? config.title : '列表';
+        _this.theme.title = config.title ? config.title : '列表';
+        return _this.theme.chartTitle = config.chartTitle ? config.chartTitle : '统计';
       };
     })(this);
     return themeConfig();

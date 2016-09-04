@@ -17,7 +17,8 @@ recentTaskComplishStatusCtrl = (function(superClass) {
 
   recentTaskComplishStatusCtrl.prototype.config = function() {
     return {
-      title: "任务"
+      title: "任务",
+      chartTitle: "今日完成情况"
     };
   };
 
@@ -49,7 +50,8 @@ recentTaskComplishStatusCtrl = (function(superClass) {
     this.complishRate = 85.2;
     this.chart = {
       size: {
-        height: 200
+        height: 200,
+        width: 300
       },
       data: {
         columns: [['data', this.complishRate]],

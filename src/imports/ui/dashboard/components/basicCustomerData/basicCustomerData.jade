@@ -3,19 +3,19 @@
     .num_with_button(layout='row' layout-align='center center')
       .num(flex='nogrow') 30203
       md-button.md-fab.md-mini.basicDashboardButton.addCustomer(flex='none' md-colors="{background:'yellow-A700'}" aria-label="Add Customer")
-        i.fa.fa-plus
+        md-icon(md-colors="{color:'grey-900'}") add
         md-tooltip(md-direction='right') 添加会员
     .info 总会员数量
     
-.customer_icon.animated.slideInDown(align='center' flex-xs=100 flex-md='100' flex-order-xs=-1 flex-order-md=-1)
-    i.fa.fa-male.font(ng-repeat='f in basicCustomerData.fa')
-    md-tooltip(md-direction='bottom') 每增加500人，这里的小人会增加一个
+.customer_icon.animated.slideInDown(align='center' flex-xs=100  flex-order-xs=-1)
+    md-icon.font(ng-repeat='f in basicCustomerData.fa' md-colors="{color:'grey-A100'}") wc
+    md-tooltip(md-direction='bottom') 每增加500人，这里的小人会增加一对
     
 .customer_vistied.animated.bounceInRight(align='center' flex-md='noshrink' flex flex-xs='noshrink')
     .num_with_button(layout='row' layout-align='center center')
       .num(flex='nogrow') 335
       md-button.md-fab.md-warn.md-mini.basicDashboardButton(md-colors='{background:"yellow-A700"}' flex='none' aria-label="Assign Tasks")
-        i.fa.fa-tasks
+        md-icon(md-colors="{color:'grey-900'}") art_track
         md-tooltip(md-direction='right') 分配任务
     .info 本周已经回访
   

@@ -1,8 +1,15 @@
 
-<basic-customer-data ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
-<basic-customer-statistic ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
-<div layout-gt-md="row" layout="column" layout-fill-gt-xs="layout-fill-gt-xs" class="recentData">
-  <recent-task-complish-status ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" flex-xs="nogrow" flex-gt-md="66" panel="mainDashboard.panelStatus" class="recentTaskComplishStatus"></recent-task-complish-status>
-  <recent-user-task ng-show="mainDashboard.panelStatus.recentUserTask.show" flex-gt-md="66" flex-xs="nogrow" panel="mainDashboard.panelStatus" class="recentUserTask"></recent-user-task>
-  <recent-joint-customer ng-show="mainDashboard.panelStatus.recentJointCustomer.show" flex-xs="nogrow" flex-gt-md="66" panel="mainDashboard.panelStatus" class="recentJointCustomer"></recent-joint-customer>
-</div>
+<md-toolbar flex="none" layout="row" layout-align="start center" hide-xs="hide-xs" class="panelSetting">
+  <div md-colors="{background:'grey-900'}" class="md-toolbar-tools"><span flex="flex"></span>
+    <md-switch flex="none" layout="row" layout-align="start center" ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" ng-model="mainDashboard.panelStatus[panelKey].show">{{panel.name}}</md-switch>
+  </div>
+</md-toolbar>
+<md-content flex="flex" layout-fill="layout-fill" layout="column">
+  <basic-customer-data ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
+  <basic-customer-statistic ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
+  <div layout-gt-xs="row" layout="column" class="recentData">
+    <recent-task-complish-status flex="flex" ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" panel="mainDashboard.panelStatus" class="recentTaskComplishStatus"></recent-task-complish-status>
+    <recent-user-task flex="flex" ng-show="mainDashboard.panelStatus.recentUserTask.show" panel="mainDashboard.panelStatus" class="recentUserTask"></recent-user-task>
+    <recent-joint-customer flex="flex" ng-show="mainDashboard.panelStatus.recentJointCustomer.show" panel="mainDashboard.panelStatus" class="recentJointCustomer"></recent-joint-customer>
+  </div>
+</md-content>

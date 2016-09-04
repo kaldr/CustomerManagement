@@ -38,7 +38,7 @@
   </div>
 </md-toolbar>
 <md-content md-colors="{background:'{{$ctrl.theme.listColor}}'}" align="center">
-  <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-no-sticky">今日完成情况</md-subheader>
+  <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-no-sticky">{{$ctrl.theme.chartTitle}}</md-subheader>
   <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
   <md-list> 
     <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">

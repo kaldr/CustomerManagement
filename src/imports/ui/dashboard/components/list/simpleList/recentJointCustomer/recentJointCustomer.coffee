@@ -8,6 +8,7 @@ class recentJointCustomerCtrl extends simpleList
     this.chart = this.constructChart()
   config: () ->
     title: '顾客'
+    chartTitle: "顾客统计"
   constructChart: () ->
     data:
       columns: [
@@ -40,6 +41,7 @@ class recentJointCustomerCtrl extends simpleList
       show: false
     size:
       height: 200
+      width: 300
 
 exports[name] = angular.module name, []
   .component name,

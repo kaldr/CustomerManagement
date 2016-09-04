@@ -19,7 +19,8 @@ recentJointCustomerCtrl = (function(superClass) {
 
   recentJointCustomerCtrl.prototype.config = function() {
     return {
-      title: '顾客'
+      title: '顾客',
+      chartTitle: "顾客统计"
     };
   };
 
@@ -53,7 +54,8 @@ recentJointCustomerCtrl = (function(superClass) {
         show: false
       },
       size: {
-        height: 200
+        height: 200,
+        width: 300
       }
     };
   };

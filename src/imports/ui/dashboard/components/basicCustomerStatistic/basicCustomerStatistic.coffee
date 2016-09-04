@@ -31,8 +31,6 @@ class basicCustomerStatisticCtrl
         tick: false
 
     this.dada =
-      zoom:
-        enabled: true
       data: this.data
       axis: this.axis
       size:

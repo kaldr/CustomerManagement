@@ -6,6 +6,7 @@ class recentTaskComplishStatusCtrl extends simpleList
     showRecentTaskComplishStatus = false
   config: () ->
     title: "任务"
+    chartTitle: "今日完成情况"
   constructor: ($reactive, $scope) ->
     config = this.config()
     super $reactive, $scope, name, config
@@ -31,6 +32,7 @@ class recentTaskComplishStatusCtrl extends simpleList
     this.chart =
       size:
         height: 200
+        width: 300
       data:
         columns: [
           ['data', this.complishRate]

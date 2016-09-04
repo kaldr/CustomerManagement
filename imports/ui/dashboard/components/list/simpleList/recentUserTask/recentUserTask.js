@@ -13,7 +13,8 @@ recentUserTaskCtrl = (function(superClass) {
   recentUserTaskCtrl.prototype.config = function() {
     return {
       title: "动态",
-      color: "grey"
+      color: "grey",
+      chartTitle: "今日操作统计"
     };
   };
 
@@ -58,7 +59,8 @@ recentUserTaskCtrl = (function(superClass) {
         }
       },
       size: {
-        height: 166
+        height: 166,
+        width: 400
       }
     };
   };

@@ -1,8 +1,13 @@
 //output: ../../../../../imports/ui/dashboard/mainDashboard/mainDashboard.html
+md-toolbar.panelSetting(flex='none' layout='row' layout-align='start center' hide-xs)
+  .md-toolbar-tools(md-colors="{background:'grey-900'}")
+    span(flex)
+    md-switch(flex='none' layout="row" layout-align='start center' ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" ng-model="mainDashboard.panelStatus[panelKey].show") {{panel.name}}
 
-basic-customer-data.basicCustomerData(ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
-basic-customer-statistic.basic-customer-statistic(ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')
-.recentData(layout-gt-md='row' layout='column' layout-fill-gt-xs)
-  recent-task-complish-status.recentTaskComplishStatus(ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" flex-xs='nogrow' flex-gt-md=66  panel='mainDashboard.panelStatus')
-  recent-user-task.recentUserTask(ng-show="mainDashboard.panelStatus.recentUserTask.show" flex-gt-md=66 flex-xs='nogrow' panel='mainDashboard.panelStatus')
-  recent-joint-customer.recentJointCustomer(ng-show="mainDashboard.panelStatus.recentJointCustomer.show" flex-xs='nogrow' flex-gt-md=66 panel='mainDashboard.panelStatus')
+md-content(flex layout-fill layout='column')
+  basic-customer-data.basicCustomerData(ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
+  basic-customer-statistic.basic-customer-statistic(ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')
+  .recentData(layout-gt-xs='row' layout='column')
+    recent-task-complish-status.recentTaskComplishStatus(flex ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show"   panel='mainDashboard.panelStatus')
+    recent-user-task.recentUserTask(flex ng-show="mainDashboard.panelStatus.recentUserTask.show"  panel='mainDashboard.panelStatus')
+    recent-joint-customer.recentJointCustomer(flex ng-show="mainDashboard.panelStatus.recentJointCustomer.show" panel='mainDashboard.panelStatus')

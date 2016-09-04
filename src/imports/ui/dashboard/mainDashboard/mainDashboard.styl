@@ -5,11 +5,9 @@
   recent-joint-customer.recentJointCustomer
     display block
     md-toolbar
-      height 50px
       min-height 50px
       // background-color: white
       .md-toolbar-tools
-        height 50px
         i
           font-size:0.9em
           // color:#ddd
@@ -19,6 +17,41 @@
     border-top-color: rgba(0,0,0,0.2)
     border-right-color:rgba(0,0,0,0.2)
     border-left-color:rgba(0,0,0,0.2)
+
+md-toolbar.panelSetting
+  min-height 32px
+  height 32px
+  .md-toolbar-tools
+    height 32px
+    md-switch
+      font-size 0.6em
+      .md-label
+        span
+          color #aaa
+      .md-thumb
+          top 3px
+          height 15px
+          width 15px
+          background-color rgb(150,150,150)
+      .md-bar
+          top 7px
+          height 10px
+          width 30px
+          background-color rgb(50,50,50)
+
+    md-switch.md-checked
+      .md-thumb
+          background-color white
+      .md-bar
+          background-color #666
+      .md-label
+        span
+          color white
+    md-switch[disabled]
+      .md-bar
+        background-color: rgba(51,51,51,.15)
+      .md-thumb
+        background-color: rgb(225,225,225)
 
 @import '../components/basicCustomerData/basicCustomerData.styl'
 @import '../components/basicCustomerStatistic/basicCustomerStatistic.styl'
