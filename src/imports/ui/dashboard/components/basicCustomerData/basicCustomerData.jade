@@ -1,5 +1,5 @@
 //output:../../../../../../imports/ui/dashboard/components/basicCustomerData/basicCustomerData.html
-.customer_count.animated.bounceInLeft(flex flex-xs='noshrink' align='center') 
+.customer_count.animated.bounceInLeft(flex flex-md='noshrink' flex-xs='noshrink' align='center') 
     .num_with_button(layout='row' layout-align='center center')
       .num(flex='nogrow') 30203
       md-button.md-fab.md-mini.basicDashboardButton.addCustomer(flex='none' md-colors="{background:'yellow-A700'}" aria-label="Add Customer")
@@ -7,11 +7,11 @@
         md-tooltip(md-direction='right') 添加会员
     .info 总会员数量
     
-.customer_icon.animated.slideInDown(align='center' flex-xs='100' flex-order-xs=-1)
+.customer_icon.animated.slideInDown(align='center' flex-xs=100 flex-md='100' flex-order-xs=-1 flex-order-md=-1)
     i.fa.fa-male.font(ng-repeat='f in basicCustomerData.fa')
     md-tooltip(md-direction='bottom') 每增加500人，这里的小人会增加一个
     
-.customer_vistied.animated.bounceInRight(align='center' flex flex-xs='noshrink')
+.customer_vistied.animated.bounceInRight(align='center' flex-md='noshrink' flex flex-xs='noshrink')
     .num_with_button(layout='row' layout-align='center center')
       .num(flex='nogrow') 335
       md-button.md-fab.md-warn.md-mini.basicDashboardButton(md-colors='{background:"yellow-A700"}' flex='none' aria-label="Assign Tasks")

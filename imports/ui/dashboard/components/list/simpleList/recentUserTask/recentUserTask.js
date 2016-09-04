@@ -1,11 +1,24 @@
 import template from './recentUserTask.html';
-var name, recentUserTaskCtrl;
+var name, recentUserTaskCtrl, simpleList,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 name = 'recentUserTask';
 
-recentUserTaskCtrl = (function() {
+simpleList = require('../simpleList').simpleList;
+
+recentUserTaskCtrl = (function(superClass) {
+  extend(recentUserTaskCtrl, superClass);
+
+  recentUserTaskCtrl.prototype.config = function() {
+    return {
+      title: "动态",
+      color: "grey"
+    };
+  };
+
   function recentUserTaskCtrl($reactive, $scope) {
-    $reactive(this).attach($scope);
+    recentUserTaskCtrl.__super__.constructor.call(this, $reactive, $scope, name, this.config());
     this.chart = this.constructChart();
   }
 
@@ -52,10 +65,13 @@ recentUserTaskCtrl = (function() {
 
   return recentUserTaskCtrl;
 
-})();
+})(simpleList);
 
 exports[name] = angular.module(name, []).component(name, {
   template: template,
   controller: recentUserTaskCtrl,
-  controllerAs: name
+  controllerAs: "$ctrl",
+  bindings: {
+    panel: "="
+  }
 }).name;

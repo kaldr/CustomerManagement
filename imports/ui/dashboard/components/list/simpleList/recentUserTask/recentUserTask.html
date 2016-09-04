@@ -1,5 +1,6 @@
 
-<md-toolbar layout="row" md-colors="{background:&quot;grey-200&quot;}">
+<!--output:../../../../../../../imports/ui/dashboard/components/list/simpleList/simpleList.html-->
+<md-toolbar layout="row" md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}">
   <div layout="row" layout-align="space-between center" class="md-toolbar-tools">
     <md-menu flex="flex" align="left">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
@@ -8,7 +9,7 @@
       </md-button>
       <md-menu-content width="3">
         <md-menu-item>
-          <md-button md-menu-align-target="md-menu-align-target" ng-click="mainDashboard.closeList()"> 
+          <md-button md-menu-align-target="md-menu-align-target" ng-click="vm.closeList()"> 
             <md-icon>visibility_off</md-icon>隐藏
           </md-button>
         </md-menu-item>
@@ -18,36 +19,34 @@
           </md-button>
         </md-menu-item>
       </md-menu-content>
-    </md-menu><span flex="flex" align="center">操作</span>
+    </md-menu><span flex="flex" align="center">{{$ctrl.theme.title}}</span>
     <md-menu flex="flex" align="right">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
-        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">dashboard</md-icon>
+        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">desktop_windows</md-icon>
         <md-tooltip>显示</md-tooltip>
       </md-button>
       <md-menu-content width="3">
-        <md-menu-item>
-          <md-button md-menu-align-target="md-menu-align-target"> 
-            <md-icon>visibility_off</md-icon>隐藏
+        <md-menu-item ng-repeat="menuitem in $ctrl.menu.display">
+          <md-button ng-class="menuitem.name" ng-if="menuitem.target" md-menu-align-target="md-menu-align-target" ng-click="menuitem[&quot;action&quot;]()"> 
+            <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
           </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button> 
-            <md-icon>visibility</md-icon>显示
+          <md-button ng-class="menuitem.name" ng-if="menuitem.target==false" ng-click="menuitem[&quot;action&quot;]()"> 
+            <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
           </md-button>
         </md-menu-item>
       </md-menu-content>
     </md-menu>
   </div>
 </md-toolbar>
-<md-content>
-  <md-subheader md-colors="{background:'grey-100'}" class="md-no-sticky">操作统计</md-subheader>
-  <basic-chart id="operationStatusChart" config="recentUserTask.chart" md-colors="{background:'grey-100'}"></basic-chart>
-  <md-list flex="noshrink" md-colors="{background:'grey-100'}">
-    <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line">
+<md-content md-colors="{background:'{{$ctrl.theme.listColor}}'}" align="center">
+  <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-no-sticky">今日完成情况</md-subheader>
+  <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
+  <md-list> 
+    <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">
       <div layout="column" class="md-list-item-text">
         <h3>黄宇</h3>
         <h4>好人</h4>
-        <p>这是一场没有结局的表演，包含所有荒谬和疯狂</p>
+        <p>这是一场没有解决的表扬</p>
       </div>
     </md-list-item>
   </md-list>

@@ -1,15 +1,30 @@
 import template from './recentTaskComplishStatus.html';
-var name, recentTaskComplishStatusCtrl;
+var name, recentTaskComplishStatusCtrl, simpleList,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 name = 'recentTaskComplishStatus';
 
-recentTaskComplishStatusCtrl = (function() {
+simpleList = require('../simpleList').simpleList;
+
+recentTaskComplishStatusCtrl = (function(superClass) {
+  extend(recentTaskComplishStatusCtrl, superClass);
+
   recentTaskComplishStatusCtrl.prototype.closeList = function(element) {
     var showRecentTaskComplishStatus;
     return showRecentTaskComplishStatus = false;
   };
 
+  recentTaskComplishStatusCtrl.prototype.config = function() {
+    return {
+      title: "任务"
+    };
+  };
+
   function recentTaskComplishStatusCtrl($reactive, $scope) {
+    var config;
+    config = this.config();
+    recentTaskComplishStatusCtrl.__super__.constructor.call(this, $reactive, $scope, name, config);
     $reactive(this).attach($scope);
     this.tasks = {
       finished: {
@@ -33,6 +48,9 @@ recentTaskComplishStatusCtrl = (function() {
     };
     this.complishRate = 85.2;
     this.chart = {
+      size: {
+        height: 200
+      },
       data: {
         columns: [['data', this.complishRate]],
         type: 'gauge'
@@ -45,10 +63,13 @@ recentTaskComplishStatusCtrl = (function() {
 
   return recentTaskComplishStatusCtrl;
 
-})();
+})(simpleList);
 
 exports[name] = angular.module(name, []).component(name, {
   template: template,
   controller: recentTaskComplishStatusCtrl,
-  controllerAs: name
+  controllerAs: '$ctrl',
+  bindings: {
+    panel: "="
+  }
 }).name;

@@ -23,11 +23,34 @@ recentUserTask = require('../components/list/simpleList/recentUserTask/recentUse
 mainDashboardCtrl = (function() {
   function mainDashboardCtrl($reactive, $scope) {
     $reactive(this).attach($scope);
+    this.panelStatus = {
+      recentTaskComplishStatus: {
+        name: "任务面板",
+        status: 'list',
+        show: true
+      },
+      recentUserTask: {
+        name: "动态面板",
+        status: 'list',
+        show: true
+      },
+      recentJointCustomer: {
+        status: 'list',
+        name: "顾客面板",
+        show: true
+      },
+      basicCustomerData: {
+        status: "list",
+        show: true,
+        name: "数据看板"
+      },
+      basicCustomerStatistic: {
+        status: "list",
+        name: "会员统计",
+        show: true
+      }
+    };
   }
-
-  mainDashboardCtrl.prototype.closeList = function($element) {
-    return console.log($element);
-  };
 
   return mainDashboardCtrl;
 

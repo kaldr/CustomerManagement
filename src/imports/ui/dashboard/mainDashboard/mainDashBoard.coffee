@@ -11,11 +11,32 @@ import template from './mainDashboard.html'
 {recentUserTask} = require '../components/list/simpleList/recentUserTask/recentUserTask'
 
 class mainDashboardCtrl
+
   constructor: ($reactive, $scope) ->
     $reactive this
       .attach $scope
-  closeList: ($element) ->
-    console.log $element
+    this.panelStatus =
+      recentTaskComplishStatus:
+        name: "任务面板"
+        status: 'list'
+        show: true
+      recentUserTask:
+        name: "动态面板"
+        status: 'list'
+        show: true
+      recentJointCustomer:
+        status: 'list'
+        name: "顾客面板"
+        show: true
+      basicCustomerData:
+        status: "list"
+        show: true
+        name: "数据看板"
+      basicCustomerStatistic:
+        status: "list"
+        name: "会员统计"
+        show: true
+
 
 name = 'mainDashboard'
 exports.MainDashboard = angular.module name, [

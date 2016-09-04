@@ -1,12 +1,13 @@
 `import template from './recentJointCustomer.html'`
 name = 'recentJointCustomer'
-
-class recentJointCustomerCtrl
+{simpleList} = require '../simpleList'
+class recentJointCustomerCtrl extends simpleList
   constructor: ($reactive, $scope) ->
-    $reactive this
-      .attach $scope
+    config = this.config()
+    super $reactive, $scope, name, config
     this.chart = this.constructChart()
-
+  config: () ->
+    title: '顾客'
   constructChart: () ->
     data:
       columns: [
@@ -44,5 +45,7 @@ exports[name] = angular.module name, []
   .component name,
     template: template
     controller: recentJointCustomerCtrl
-    controllerAs: name
+    controllerAs: '$ctrl'
+    bindings:
+      panel: "="
   .name

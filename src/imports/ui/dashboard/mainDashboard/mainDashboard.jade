@@ -1,8 +1,8 @@
 //output: ../../../../../imports/ui/dashboard/mainDashboard/mainDashboard.html
-basic-customer-data.basicCustomerData(flex='none' layout-wrap layout='row' layout-align='space-around center')
-basic-customer-statistic.basic-customer-statistic(flex='none' layout='row'  layout-align='center end')
-md-button(ng-click='showRecentTaskComplishStatus=!showRecentTaskComplishStatus') 关闭
-.recentData(layout-gt-sm='row' layout='column' layout-wrap-xs ng-init="showRecentTaskComplishStatus=false")
-  recent-task-complish-status.recentTaskComplishStatus.move-left(flex-gt-sm ng-hide='showRecentTaskComplishStatus' class='move-left')
-  recent-user-task.recentUserTask.move-left(flex-gt-sm)
-  recent-joint-customer.recentJointCustomer.move-left(flex-gt-sm)
+
+basic-customer-data.basicCustomerData(ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
+basic-customer-statistic.basic-customer-statistic(ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')
+.recentData(layout-gt-md='row' layout='column' layout-fill-gt-xs)
+  recent-task-complish-status.recentTaskComplishStatus(ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" flex-xs='nogrow' flex-gt-md=66  panel='mainDashboard.panelStatus')
+  recent-user-task.recentUserTask(ng-show="mainDashboard.panelStatus.recentUserTask.show" flex-gt-md=66 flex-xs='nogrow' panel='mainDashboard.panelStatus')
+  recent-joint-customer.recentJointCustomer(ng-show="mainDashboard.panelStatus.recentJointCustomer.show" flex-xs='nogrow' flex-gt-md=66 panel='mainDashboard.panelStatus')

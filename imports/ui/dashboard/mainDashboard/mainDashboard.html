@@ -1,9 +1,8 @@
 
-<basic-customer-data flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
-<basic-customer-statistic flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
-<md-button ng-click="showRecentTaskComplishStatus=!showRecentTaskComplishStatus">关闭</md-button>
-<div layout-gt-sm="row" layout="column" layout-wrap-xs="layout-wrap-xs" ng-init="showRecentTaskComplishStatus=false" class="recentData">
-  <recent-task-complish-status flex-gt-sm="flex-gt-sm" ng-hide="showRecentTaskComplishStatus" class="recentTaskComplishStatus move-left move-left"></recent-task-complish-status>
-  <recent-user-task flex-gt-sm="flex-gt-sm" class="recentUserTask move-left"></recent-user-task>
-  <recent-joint-customer flex-gt-sm="flex-gt-sm" class="recentJointCustomer move-left"></recent-joint-customer>
+<basic-customer-data ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex="none" layout-wrap="layout-wrap" layout="row" layout-align="space-around center" class="basicCustomerData"></basic-customer-data>
+<basic-customer-statistic ng-show="mainDashboard.panelStatus.basicCustomerStatistic.show" flex="none" layout="row" layout-align="center end" class="basic-customer-statistic"></basic-customer-statistic>
+<div layout-gt-md="row" layout="column" layout-fill-gt-xs="layout-fill-gt-xs" class="recentData">
+  <recent-task-complish-status ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" flex-xs="nogrow" flex-gt-md="66" panel="mainDashboard.panelStatus" class="recentTaskComplishStatus"></recent-task-complish-status>
+  <recent-user-task ng-show="mainDashboard.panelStatus.recentUserTask.show" flex-gt-md="66" flex-xs="nogrow" panel="mainDashboard.panelStatus" class="recentUserTask"></recent-user-task>
+  <recent-joint-customer ng-show="mainDashboard.panelStatus.recentJointCustomer.show" flex-xs="nogrow" flex-gt-md="66" panel="mainDashboard.panelStatus" class="recentJointCustomer"></recent-joint-customer>
 </div>

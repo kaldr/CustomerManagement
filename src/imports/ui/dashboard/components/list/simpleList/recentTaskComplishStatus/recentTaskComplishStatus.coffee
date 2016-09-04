@@ -1,11 +1,14 @@
 `import template from './recentTaskComplishStatus.html'`
 name = 'recentTaskComplishStatus'
-
-class recentTaskComplishStatusCtrl
+{simpleList} = require '../simpleList'
+class recentTaskComplishStatusCtrl extends simpleList
   closeList: (element) ->
     showRecentTaskComplishStatus = false
-
+  config: () ->
+    title: "任务"
   constructor: ($reactive, $scope) ->
+    config = this.config()
+    super $reactive, $scope, name, config
     $reactive this
       .attach $scope
     this.tasks =
@@ -26,6 +29,8 @@ class recentTaskComplishStatusCtrl
         today: 3
     this.complishRate = 85.2
     this.chart =
+      size:
+        height: 200
       data:
         columns: [
           ['data', this.complishRate]
@@ -37,5 +42,7 @@ exports[name] = angular.module name, []
   .component name,
     template: template
     controller: recentTaskComplishStatusCtrl
-    controllerAs: name
+    controllerAs: '$ctrl'
+    bindings:
+      panel: "="
   .name

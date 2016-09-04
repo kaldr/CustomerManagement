@@ -2,20 +2,24 @@ var angular, basicChartCtrl, name;
 
 angular = require('angular');
 
+name = 'basicChart';
+
 basicChartCtrl = (function() {
   function basicChartCtrl($scope, $reactive, $element, $attrs) {
     var chart, config;
     $reactive(this).attach($scope);
     config = this.config;
     chart = c3.generate(config);
-    $("#" + this.id).append(chart.element);
+    if (this.component) {
+      angular.element("." + this.component + " basic-chart").append(chart.element);
+    } else {
+      angular.element("#" + this.id).append(chart.element);
+    }
   }
 
   return basicChartCtrl;
 
 })();
-
-name = 'basicChart';
 
 exports[name] = angular.module(name, []).component(name, {
   template: "<div></div>",
@@ -23,6 +27,7 @@ exports[name] = angular.module(name, []).component(name, {
   controllerAs: name,
   bindings: {
     config: '=',
-    id: '@'
+    id: '@',
+    component: "="
   }
 }).name;

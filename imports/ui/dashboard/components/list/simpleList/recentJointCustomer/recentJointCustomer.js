@@ -1,13 +1,27 @@
 import template from './recentJointCustomer.html';
-var name, recentJointCustomerCtrl;
+var name, recentJointCustomerCtrl, simpleList,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 name = 'recentJointCustomer';
 
-recentJointCustomerCtrl = (function() {
+simpleList = require('../simpleList').simpleList;
+
+recentJointCustomerCtrl = (function(superClass) {
+  extend(recentJointCustomerCtrl, superClass);
+
   function recentJointCustomerCtrl($reactive, $scope) {
-    $reactive(this).attach($scope);
+    var config;
+    config = this.config();
+    recentJointCustomerCtrl.__super__.constructor.call(this, $reactive, $scope, name, config);
     this.chart = this.constructChart();
   }
+
+  recentJointCustomerCtrl.prototype.config = function() {
+    return {
+      title: '顾客'
+    };
+  };
 
   recentJointCustomerCtrl.prototype.constructChart = function() {
     return {
@@ -46,10 +60,13 @@ recentJointCustomerCtrl = (function() {
 
   return recentJointCustomerCtrl;
 
-})();
+})(simpleList);
 
 exports[name] = angular.module(name, []).component(name, {
   template: template,
   controller: recentJointCustomerCtrl,
-  controllerAs: name
+  controllerAs: '$ctrl',
+  bindings: {
+    panel: "="
+  }
 }).name;
