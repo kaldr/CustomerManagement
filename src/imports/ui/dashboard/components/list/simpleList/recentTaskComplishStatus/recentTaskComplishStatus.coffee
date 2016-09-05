@@ -1,12 +1,17 @@
+
 `import template from './recentTaskComplishStatus.html'`
+
 name = 'recentTaskComplishStatus'
+
 {simpleList} = require '../simpleList'
+{chartConfig} = require './config.chart'
+
+
 class recentTaskComplishStatusCtrl extends simpleList
   closeList: (element) ->
     showRecentTaskComplishStatus = false
   config: () ->
     title: "任务"
-    chartTitle: "今日完成情况"
   constructor: ($reactive, $scope) ->
     config = this.config()
     super $reactive, $scope, name, config
@@ -26,20 +31,11 @@ class recentTaskComplishStatusCtrl extends simpleList
       started:
         total: 18
         month: 8
-        week: 2
+        week: 12
         today: 3
     this.complishRate = 85.2
-    this.chart =
-      size:
-        height: 200
-        width: 300
-      data:
-        columns: [
-          ['data', this.complishRate]
-        ]
-        type: 'gauge'
-      color:
-        pattern: ['#0277BD','#0288D1', "#039BE5","#03A9F4"]
+    this.chart = chartConfig
+
 exports[name] = angular.module name, []
   .component name,
     template: template
@@ -47,4 +43,5 @@ exports[name] = angular.module name, []
     controllerAs: '$ctrl'
     bindings:
       panel: "="
+      panelmode: "="
   .name

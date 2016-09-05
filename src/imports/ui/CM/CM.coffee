@@ -4,7 +4,7 @@ angularMeteor = require 'angular-meteor'
 ngMaterial = require 'angular-material'
 uiRouter = require "angular-ui-router"
 #CM modules
-{MainDashboard} = require "../dashboard/mainDashboard/mainDashboard"
+{MainDashboard} = require "../dashboard/mainDashboard/mainDashBoard"
 {customerManagement} = require '../customerManagement/customerManagement/customerManagement'
 
 #basic html template

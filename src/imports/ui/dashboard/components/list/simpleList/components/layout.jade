@@ -1,0 +1,42 @@
+md-content(md-colors="{background:'{{$ctrl.theme.listColor}}'}")
+  md-grid-list(md-cols-xs=1 md-cols-sm=5 md-cols-gt-sm=8 md-gutter='12px' md-row-height="fit" md-row-height-gt-md="3:4")  
+    md-grid-tile(md-colspan-gt-xs='2' md-rowspan-gt-xs='2')
+      md-content
+        md-subheader.md-no-sticky(md-colors="{background:'{{$ctrl.theme.listColor}}'}") {{$ctrl.theme.chartTitle}} 
+        basic-chart(component="$ctrl.ID" config='$ctrl.chart')
+    md-grid-tile(md-colspan-gt-xs='3' md-rowspan-gt-xs='5')
+      md-content(layout-fill layout='column')
+        md-list(layout-fill flex)
+          md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null' )
+            .md-list-item-text(layout='column')
+              h3 汪峰
+              h4 北京，北京
+              p 当我走在这里的每一条街道
+    md-grid-tile(md-colspan-gt-xs='3' md-rowspan-gt-xs='5')
+      md-content(layout-fill layout='column')
+        md-list(layout-fill flex)
+          md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null' )
+            .md-list-item-text(layout='column')
+              h3 汪峰
+              h4 北京，北京
+              p 当我走在这里的每一条街道
+    md-grid-tile(md-colspan-gt-xs='2' md-rowspan-gt-xs='2')
+      md-content
+        md-subheader.md-no-sticky(md-colors="{background:'{{$ctrl.theme.listColor}}'}") {{$ctrl.theme.chartTitle}} 
+        basic-chart(component="$ctrl.ID" config='$ctrl.chart')
+    md-grid-tile(md-colspan-gt-xs='3' md-rowspan-gt-xs='5')
+      md-content(layout-fill layout='column')
+        md-list(layout-fill flex)
+          md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null' )
+            .md-list-item-text(layout='column')
+              h3 汪峰
+              h4 北京，北京
+              p 当我走在这里的每一条街道
+    md-grid-tile(md-colspan-gt-xs='3' md-rowspan-gt-xs='5')
+      md-content(layout-fill layout='column')
+        md-list(layout-fill flex)
+          md-list-item.md-3-line.md-long-text(ng-repeat="item in [1,2,3,4,5,6]" ng-click='null' )
+            .md-list-item-text(layout='column')
+              h3 汪峰
+              h4 北京，北京
+              p 当我走在这里的每一条街道

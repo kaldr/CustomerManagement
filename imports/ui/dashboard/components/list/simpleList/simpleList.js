@@ -1,5 +1,7 @@
-var simpleList,
+var menuConfig, simpleList,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+menuConfig = require('./config.view').menuConfig;
 
 simpleList = (function() {
   function simpleList($reactive, $scope, name, config) {
@@ -12,38 +14,34 @@ simpleList = (function() {
     this.lastPanelStatus = 'list';
     this.ID = name;
     this.theme = {};
-    this.menu = {
-      display: [
-        {
-          name: "fullscreen",
-          title: "全屏",
-          icon: "visibility",
-          target: true,
-          action: this.fullScreenPanel
-        }, {
-          name: 'hidelist',
-          title: '隐藏',
-          target: false,
-          icon: 'visibility_off',
-          action: this.hidePanel
-        }
-      ],
-      action: []
-    };
-    console.log(config);
+    this.menu = menuConfig(this);
     if (config) {
       this.configuration(config);
     }
   }
 
   simpleList.prototype.hidePanel = function() {
-    return this.panel[this.ID].status = 'hidden';
+    var panelItem, panelName, ref, showCount;
+    this.panel[this.ID].status = 'hidden';
+    this.panel[this.ID].show = false;
+    showCount = 0;
+    ref = this.panel;
+    for (panelName in ref) {
+      panelItem = ref[panelName];
+      if (panelItem.show) {
+        showCount += 1;
+      }
+    }
+    if (showCount === 1) {
+      return this.panelmode === 'fullscreen';
+    }
   };
 
-  simpleList.prototype.fullScreenPanel = function() {
+  simpleList.prototype.fullScreenPanel = function($location, $anchorScroll) {
     this.panel[this.ID].status = 'fullscreen';
     this.lastPanelStatus = 'fullscreen';
     this.loadPanelFullScreen();
+    this.panelmode = 'fullscreen';
     return false;
   };
 
@@ -57,6 +55,11 @@ simpleList = (function() {
     results = [];
     for (n in ref) {
       v = ref[n];
+      if (n === this.ID) {
+        this.panel[n].disable = true;
+      } else {
+        this.panel[n].disable = false;
+      }
       if (n === this.ID) {
         this.panel[n].status = 'fullscreen';
       } else {

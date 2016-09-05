@@ -1,6 +1,5 @@
 
-<!--output:../../../../../../../imports/ui/dashboard/components/list/simpleList/simpleList.html-->
-<md-toolbar layout="row" md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}">
+<md-toolbar md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}" ng-hide="$ctrl.panelmode=='fullscreen'">
   <div layout="row" layout-align="space-between center" class="md-toolbar-tools">
     <md-menu flex="flex" align="left">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
@@ -27,10 +26,10 @@
       </md-button>
       <md-menu-content width="3">
         <md-menu-item ng-repeat="menuitem in $ctrl.menu.display">
-          <md-button ng-class="menuitem.name" ng-if="menuitem.target" md-menu-align-target="md-menu-align-target" ng-click="menuitem[&quot;action&quot;]()"> 
+          <md-button ng-class="menuitem.name" ng-disabled="menuitem.name==$ctrl.panel[$ctrl.ID].status" ng-if="menuitem.target" md-menu-align-target="md-menu-align-target" ng-click="menuitem[&quot;action&quot;]()"> 
             <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
           </md-button>
-          <md-button ng-class="menuitem.name" ng-if="menuitem.target==false" ng-click="menuitem[&quot;action&quot;]()"> 
+          <md-button ng-class="menuitem.name" ng-disabled="menuitem.name==$ctrl.panel[$ctrl.ID].status" ng-if="menuitem.target==false" ng-click="menuitem[&quot;action&quot;]()"> 
             <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
           </md-button>
         </md-menu-item>
@@ -38,15 +37,15 @@
     </md-menu>
   </div>
 </md-toolbar>
-<md-content md-colors="{background:'{{$ctrl.theme.listColor}}'}" align="center">
-  <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-no-sticky">{{$ctrl.theme.chartTitle}}</md-subheader>
+<md-content md-colors="{background:'{{$ctrl.theme.listColor}}'}">
+  <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-no-sticky">{{$ctrl.theme.chartTitle}} </md-subheader>
   <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
-  <md-list> 
+  <md-list>
     <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">
       <div layout="column" class="md-list-item-text">
-        <h3>黄宇</h3>
-        <h4>好人</h4>
-        <p>这是一场没有解决的表扬</p>
+        <h3>汪峰</h3>
+        <h4>北京，北京</h4>
+        <p>当我走在这里的每一条街道</p>
       </div>
     </md-list-item>
   </md-list>

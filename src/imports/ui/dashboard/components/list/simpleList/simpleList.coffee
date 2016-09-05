@@ -1,3 +1,5 @@
+{menuConfig} = require './config.view'
+
 class simpleList
     constructor: ($reactive, $scope, name, config) ->
         $reactive this
@@ -5,34 +7,23 @@ class simpleList
         this.lastPanelStatus = 'list'
         this.ID = name
         this.theme = {}
-        this.menu =
-          display: [
-            {
-                name: "fullscreen"
-                title: "全屏"
-                icon: "visibility"
-                target: true
-                action: this.fullScreenPanel
-            }
-            {
-                name: 'hidelist'
-                title: '隐藏'
-                target: false
-                icon: 'visibility_off'
-                action: this.hidePanel
-            }
-          ]
-          action: []
-        console.log config
+        this.menu = menuConfig(this)
         if config then this.configuration(config)
     #隐藏面板
     hidePanel: () =>
         this.panel[this.ID].status = 'hidden'
+        this.panel[this.ID].show = false
+        showCount = 0
+        for panelName, panelItem of this.panel
+          showCount += 1 if panelItem.show
+        if showCount == 1
+          this.panelmode == 'fullscreen'
     #最大化面板
-    fullScreenPanel: () =>
+    fullScreenPanel: ($location, $anchorScroll) =>
         this.panel[this.ID].status = 'fullscreen'
         this.lastPanelStatus = 'fullscreen'
         this.loadPanelFullScreen()
+        this.panelmode = 'fullscreen'
         false
     #显示面板
     showPanel: () =>
@@ -40,6 +31,7 @@ class simpleList
     #切换面板到全屏的状态
     loadPanelFullScreen: () =>
         for n, v of this.panel
+          if n == this.ID then this.panel[n].disable = true else this.panel[n].disable = false
           if n == this.ID then this.panel[n].status = 'fullscreen' else this.panel[n].status='hidden'
           if n == this.ID then this.panel[n].show = true else this.panel[n].show = false
 

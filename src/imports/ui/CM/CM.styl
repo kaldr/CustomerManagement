@@ -14,5 +14,33 @@ md-toolbar.navi
       margin-right 20px
       i.fa.fa-search
         font-size:1.3em
+md-switch
+  font-size 0.6em
+  .md-label
+    span
+      color #555
+  .md-thumb
+      top 3px
+      height 15px
+      width 15px
+      background-color rgb(150,150,150)
+  .md-bar
+      top 7px
+      height 10px
+      width 30px
+      background-color #555
 
+md-switch.md-checked
+  .md-thumb
+      background-color white
+  .md-bar
+      background-color #555
+  .md-label
+    span
+      color white
+md-switch[disabled]
+  .md-bar
+    background-color: #444
+  .md-thumb
+    background-color: #575757
 @import '../dashboard/mainDashboard/mainDashboard.styl'

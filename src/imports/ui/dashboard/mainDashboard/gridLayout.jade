@@ -1,0 +1,20 @@
+md-content.recentData(flex layout='column' layout-align='center start' layout-fill)
+  md-grid-list(
+    flex layout-fill
+    md-cols-xs=1 
+    md-cols-sm=2 
+    md-cols-md=4 
+    md-cols-gt-md=6 
+    md-row-height-gt-md="fit"
+    md-row-height="fit" )
+    md-grid-tile(md-colspan="6" layout='column' flex ng-show="mainDashboard.panelStatus.recentTaskComplishStatus.show" )
+      md-content(layout-fill layout='column' flex)
+        recent-task-complish-status.recentTaskComplishStatus.simpleList(flex layout='column'  panel='mainDashboard.panelStatus')
+    md-grid-tile(md-colspan="6" layout='column' flex ng-show="mainDashboard.panelStatus.recentUserTask.show" )
+      md-content(layout-fill layout='column' flex )
+        recent-user-task.recentUserTask.simpleList(flex layout='column' panel='mainDashboard.panelStatus')
+    md-grid-tile(md-colspan="6" layout='column' flex ng-show="mainDashboard.panelStatus.recentJointCustomer.show" )
+      md-content(layout-fill layout='column' flex)
+        recent-joint-customer.recentJointCustomer.simpleList(flex layout='column' panel='mainDashboard.panelStatus')
+
+    

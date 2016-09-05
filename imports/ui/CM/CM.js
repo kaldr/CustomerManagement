@@ -8,7 +8,7 @@ ngMaterial = require('angular-material');
 
 uiRouter = require("angular-ui-router");
 
-MainDashboard = require("../dashboard/mainDashboard/mainDashboard").MainDashboard;
+MainDashboard = require("../dashboard/mainDashboard/mainDashBoard").MainDashboard;
 
 customerManagement = require('../customerManagement/customerManagement/customerManagement').customerManagement;
 

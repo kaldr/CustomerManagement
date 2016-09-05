@@ -1,0 +1,32 @@
+md-toolbar.panelSetting(flex='none' layout='row' layout-align='start center' hide-xs)
+  .md-toolbar-tools(md-colors="{background:'grey-900'}")
+    md-switch(
+      ng-hide='true'
+      flex='none' 
+      layout="row" 
+      layout-align='start center' 
+      ng-model="mainDashboard.allPanelsShownButton.status"
+      ng-disabled='mainDashboard.allPanelsShownButton.disable'
+      ng-change='mainDashboard.openAllPanels()') 显示全部
+    span.animated.fadeInDown(
+      ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" 
+      ng-show="panel.status=='fullscreen'"
+      ) {{panel.name}}
+    span(flex)
+    md-switch(
+      flex='none' 
+      layout="row" 
+      layout-align='start center' 
+      ng-repeat="(panelKey,panel) in mainDashboard.topPanelStatus" 
+      ng-model="mainDashboard.topPanelStatus[panelKey].show" 
+      ng-disabled="panel.disable" 
+      ) {{panel.name}}
+
+    md-switch(
+      flex='none' 
+      layout="row" 
+      layout-align='start center' 
+      ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" 
+      ng-model="mainDashboard.panelStatus[panelKey].show" 
+      ng-disabled="panel.disable" 
+      ng-change='mainDashboard.changePanelStatus(mainDashboard.panelStatus,panelKey)') {{panel.name}}

@@ -1,11 +1,13 @@
 import template from './recentTaskComplishStatus.html';
-var name, recentTaskComplishStatusCtrl, simpleList,
+var chartConfig, name, recentTaskComplishStatusCtrl, simpleList,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
 name = 'recentTaskComplishStatus';
 
 simpleList = require('../simpleList').simpleList;
+
+chartConfig = require('./config.chart').chartConfig;
 
 recentTaskComplishStatusCtrl = (function(superClass) {
   extend(recentTaskComplishStatusCtrl, superClass);
@@ -17,8 +19,7 @@ recentTaskComplishStatusCtrl = (function(superClass) {
 
   recentTaskComplishStatusCtrl.prototype.config = function() {
     return {
-      title: "任务",
-      chartTitle: "今日完成情况"
+      title: "任务"
     };
   };
 
@@ -43,24 +44,12 @@ recentTaskComplishStatusCtrl = (function(superClass) {
       started: {
         total: 18,
         month: 8,
-        week: 2,
+        week: 12,
         today: 3
       }
     };
     this.complishRate = 85.2;
-    this.chart = {
-      size: {
-        height: 200,
-        width: 300
-      },
-      data: {
-        columns: [['data', this.complishRate]],
-        type: 'gauge'
-      },
-      color: {
-        pattern: ['#0277BD', '#0288D1', "#039BE5", "#03A9F4"]
-      }
-    };
+    this.chart = chartConfig;
   }
 
   return recentTaskComplishStatusCtrl;
@@ -72,6 +61,7 @@ exports[name] = angular.module(name, []).component(name, {
   controller: recentTaskComplishStatusCtrl,
   controllerAs: '$ctrl',
   bindings: {
-    panel: "="
+    panel: "=",
+    panelmode: "="
   }
 }).name;
