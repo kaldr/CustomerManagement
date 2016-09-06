@@ -1,0 +1,28 @@
+md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}" ng-hide="$ctrl.panelmode=='fullscreen'")
+  .md-toolbar-tools(layout='row' layout-align='space-between center')
+    md-menu(flex align='left')
+      md-button.md-icon-button(ng-click='$mdOpenMenu()')
+        md-icon(md-colors="{color:'grey-500'}" md-menu-origin) menu
+        md-tooltip 菜单
+      md-menu-content(width=3)
+        md-menu-item
+          md-button(md-menu-align-target ng-click='vm.closeList()') 
+            md-icon visibility_off
+            |隐藏
+        md-menu-item
+          md-button 
+            md-icon visibility
+            |显示
+    span(flex align='center') {{$ctrl.theme.title}}
+    md-menu(flex align='right')
+      md-button.md-icon-button(ng-click='$mdOpenMenu()')
+        md-icon(md-colors="{color:'grey-500'}" md-menu-origin ng-click='$mdOpenMenu()') desktop_windows
+        md-tooltip 显示
+      md-menu-content(width=3)
+        md-menu-item(ng-repeat='menuitem in $ctrl.menu.display')
+          md-button(ng-class='menuitem.name' ng-disabled='menuitem.name==$ctrl.panel[$ctrl.ID].status' ng-if='menuitem.target' md-menu-align-target ng-click='menuitem["action"]()') 
+            md-icon {{menuitem.icon}}
+            |{{menuitem.title}}
+          md-button(ng-class='menuitem.name' ng-disabled='menuitem.name==$ctrl.panel[$ctrl.ID].status' ng-if='menuitem.target==false' ng-click='menuitem["action"]()') 
+            md-icon {{menuitem.icon}}
+            |{{menuitem.title}}

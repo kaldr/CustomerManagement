@@ -1,0 +1,5 @@
+include ./layoutSettingToolbar.jade
+md-content(flex layout-fill layout='column')
+  basic-customer-data.basicCustomerData(ng-show="mainDashboard.topPanelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
+  basic-customer-statistic.basic-customer-statistic(ng-show="mainDashboard.topPanelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')
+  include ./basicLayout.jade
