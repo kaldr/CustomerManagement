@@ -21,7 +21,7 @@ recentUserTaskCtrl = (function(superClass) {
 
   function recentUserTaskCtrl($reactive, $scope, $window) {
     recentUserTaskCtrl.__super__.constructor.call(this, name, this.config(), $reactive, $scope, $window);
-    this.chart = chartConfig;
+    this.chart = chartConfig.basicChart;
   }
 
   recentUserTaskCtrl.prototype.showMenu = function($mdOpenMenu, ev) {

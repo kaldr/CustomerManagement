@@ -48,7 +48,7 @@ recentTaskComplishStatusCtrl = (function(superClass) {
       }
     };
     this.complishRate = 85.2;
-    this.chart = chartConfig;
+    this.chart = chartConfig.basicChart;
   }
 
   return recentTaskComplishStatusCtrl;

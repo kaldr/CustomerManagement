@@ -3,7 +3,7 @@ exports.menuConfig = (ob) ->
     {
         name: "fullscreen"
         title: "全屏"
-        icon: "visibility"
+        icon: "zoom_out_map"
         target: true
         action: ob.fullScreenPanel
         disable: false

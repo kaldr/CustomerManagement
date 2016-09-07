@@ -15,7 +15,7 @@ recentJointCustomerCtrl = (function(superClass) {
     var config;
     config = this.config();
     recentJointCustomerCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window);
-    this.chart = chartConfig;
+    this.chart = chartConfig.basicChart;
     template = this.template;
   }
 

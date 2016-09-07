@@ -1,0 +1,33 @@
+
+<md-content layout="column" flex="flex" md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="simpleListContent">
+  <section>
+    <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-primary">{{$ctrl.theme.chartTitle}} </md-subheader>
+    <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
+    <md-list>
+      <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">
+        <div layout="column" class="md-list-item-text">
+          <h3>汪峰</h3>
+          <h4>北京，北京</h4>
+          <p>当我走在这里的每一条街道</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </section>
+</md-content>
+<!--rank-->
+<!--search-->
+<!--list common-->
+<!--list started-->
+<!--static-->
+<!--chart-->
+<!--detail-->
+<!--workflow-->
+<!--newsfeed-->
+<!--calendar-->
+<!--file uploader-->
+<!--fileList-->
+<!--messager-->
+<!--salary-->
+<!--clock-->
+<!--calculator-->
+<!--weather report-->

@@ -31,7 +31,7 @@ class recentTaskComplishStatusCtrl extends expandablePanel
         week: 12
         today: 3
     this.complishRate = 85.2
-    this.chart = chartConfig
+    this.chart = chartConfig.basicChart
 
 exports[name] = angular.module name, []
   .component name,

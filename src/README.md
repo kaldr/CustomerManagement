@@ -1,6 +1,7 @@
 # client
 # server
 # imports
+
 # 路由
 路由全部由基于angular的uiRouter完成。需要在imports
 
@@ -12,6 +13,10 @@
 
 # UI框架
 整套UI框架的基础Web部件基于MaterialUI和angularUI的相关内容。
+
+## components-based programming
+All the ui are separated into components, there are lots of common compoents in components folder.
+The drawback of this kind of programming is nested components variable control. For example, if you have a component called 'panel', under 'panel' you use 'userList' component and 'dailyCost' component, if you want to transport a value in 'panel' to its child components, you have to use binding which cause some inconveniences.
 
 
 ## 静态资源
