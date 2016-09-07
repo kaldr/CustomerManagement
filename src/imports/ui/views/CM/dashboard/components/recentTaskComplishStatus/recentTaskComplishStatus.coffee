@@ -1,13 +1,10 @@
 
-`import template from './recentTaskComplishStatus.html'`
-
 name = 'recentTaskComplishStatus'
 
-{simpleList} = require '../simpleList'
+{expandablePanel, template} = require '/imports/ui/layout/panel/expandablePanel/expandablePanel'
 {chartConfig} = require './config.chart'
 
-
-class recentTaskComplishStatusCtrl extends simpleList
+class recentTaskComplishStatusCtrl extends expandablePanel
   closeList: (element) ->
     showRecentTaskComplishStatus = false
   config: () ->

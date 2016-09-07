@@ -1,7 +1,9 @@
+`import template from './expandablePanel.html'`
+
 angular = require 'angular'
 {menuConfig} = require './config.view'
 
-class expandabelPanel
+class expandablePanel
     constructor: (name, config, $reactive, $scope, $window) ->
         $reactive this
             .attach $scope
@@ -10,6 +12,7 @@ class expandabelPanel
         this.theme = {}
         this.menu = menuConfig(this)
         if config then this.configuration(config)
+        this.template = template
         # angular.element $window
         #   .bind 'resize', () -> this.onResize()
     #尺寸改变
@@ -59,4 +62,5 @@ class expandabelPanel
         this.theme.chartTitle = if config.chartTitle then config.chartTitle else '统计'
       themeConfig()
 
-exports.expandabelPanel = expandabelPanel
+exports.expandablePanel = expandablePanel
+exports.template = template

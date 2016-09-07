@@ -1,13 +1,12 @@
 `import template from './mainDashboard.html'`
 angular = require 'angular'
 angularMeteor = require 'angular-meteor'
-ngAnimate = require 'angular-animate'
 {mainDashboardConfig} = require './config.view'
 {basicCustomerData} = require '../components/basicCustomerData/basicCustomerData'
 {basicCustomerStatistic} = require '../components/basicCustomerStatistic/basicCustomerStatistic'
-{recentJointCustomer} = require '../components/list/simpleList/recentJointCustomer/recentJointCustomer'
-{recentTaskComplishStatus} = require '../components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus'
-{recentUserTask} = require '../components/list/simpleList/recentUserTask/recentUserTask'
+{recentJointCustomer} = require '../components/recentJointCustomer/recentJointCustomer'
+{recentTaskComplishStatus} = require '../components/recentTaskComplishStatus/recentTaskComplishStatus'
+{recentUserTask} = require '../components/recentUserTask/recentUserTask'
 {expandablePanelWithStatistic} = require '../../../../layout/page/dashboard/expandablePanelWithStatistic'
 
 name = 'mainDashboard'
@@ -27,7 +26,6 @@ class mainDashboardCtrl extends expandablePanelWithStatistic
 
 exports.MainDashboard = angular.module name, [
     angularMeteor
-    ngAnimate
     basicCustomerData
     basicCustomerStatistic
     recentJointCustomer

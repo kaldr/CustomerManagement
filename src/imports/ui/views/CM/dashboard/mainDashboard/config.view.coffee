@@ -1,4 +1,6 @@
 exports.mainDashboardConfig =
+  panelSettingToolbar:
+    display: true
   toppanel:
     basicCustomerData:
       status: "list"#状态
@@ -10,7 +12,8 @@ exports.mainDashboardConfig =
       name: "会员统计"
       show: true
       disable: false
-  panel: #操作面板
+  #下方操作面板（数量不限）
+  panel:
     recentTaskComplishStatus:
       name: "任务面板"
       status: 'list'

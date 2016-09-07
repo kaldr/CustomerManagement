@@ -1,11 +1,10 @@
 #template
-`import template from './recentUserTask.html'`
-{simpleList} = require '../simpleList'
+{expandablePanel, template} = require '/imports/ui/layout/panel/expandablePanel/expandablePanel'
 #config
 {chartConfig} = require './config.chart'
 name = 'recentUserTask'
 
-class recentUserTaskCtrl extends simpleList
+class recentUserTaskCtrl extends expandablePanel
     config: () ->
       title: "动态"
       color: "grey"

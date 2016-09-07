@@ -1,4 +1,7 @@
 exports.mainDashboardConfig = {
+  panelSettingToolbar: {
+    display: true
+  },
   toppanel: {
     basicCustomerData: {
       status: "list",
