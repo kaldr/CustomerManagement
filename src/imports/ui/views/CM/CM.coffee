@@ -9,6 +9,7 @@ uiRouter = require "angular-ui-router"
 
 #basic html template
 `import template from './CM.html'`
+
 #class=====================================================================
 class CMCtrl
     constructor: ($reactive, $scope, $state, $location) ->

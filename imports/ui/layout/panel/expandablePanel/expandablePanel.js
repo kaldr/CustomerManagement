@@ -13,6 +13,7 @@ expandablePanel = (function() {
     this.showPanel = bind(this.showPanel, this);
     this.fullScreenPanel = bind(this.fullScreenPanel, this);
     this.hidePanel = bind(this.hidePanel, this);
+    this.recoverPanel = bind(this.recoverPanel, this);
     $reactive(this).attach($scope);
     this.lastPanelStatus = 'list';
     this.ID = name;
@@ -35,6 +36,18 @@ expandablePanel = (function() {
     }
     angular.element('.simpleListContent').height(height);
     return true;
+  };
+
+  expandablePanel.prototype.recoverPanel = function() {
+    var panelItem, panelName, ref;
+    ref = this.panel;
+    for (panelName in ref) {
+      panelItem = ref[panelName];
+      this.panel[panelName].status = 'list';
+      this.panel[panelName].show = true;
+    }
+    this.panelmode = 'list';
+    return false;
   };
 
   expandablePanel.prototype.hidePanel = function() {

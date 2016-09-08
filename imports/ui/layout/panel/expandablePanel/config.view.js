@@ -3,20 +3,36 @@ exports.menuConfig = function(ob) {
     display: [
       {
         name: "fullscreen",
-        title: "全屏",
+        title: "展开",
         icon: "zoom_out_map",
         target: true,
         action: ob.fullScreenPanel,
         disable: false
       }, {
-        name: 'hidden',
-        title: '隐藏',
+        name: "list",
+        title: "收缩",
         target: false,
-        icon: 'visibility_off',
-        action: ob.hidePanel,
-        disable: false
+        icon: 'compare_arrows',
+        action: ob.recoverPanel,
+        diable: false
       }
     ],
-    action: []
+    action: [
+      {
+        name: "fullscreen",
+        title: "展开",
+        icon: "zoom_out_map",
+        target: true,
+        action: ob.fullScreenPanel,
+        disable: false
+      }, {
+        name: "list",
+        title: "收缩",
+        target: false,
+        icon: 'compare_arrows',
+        action: ob.recoverPanel,
+        diable: false
+      }
+    ]
   };
 };

@@ -1,7 +1,7 @@
 
 <md-toolbar flex="none" layout="row" layout-align="start center" hide-xs="hide-xs" class="panelSetting">
   <div md-colors="{background:'grey-900'}" class="md-toolbar-tools">
-    <md-switch ng-hide="true" flex="none" layout="row" layout-align="start center" ng-model="mainDashboard.allPanelsShownButton.status" ng-disabled="mainDashboard.allPanelsShownButton.disable" ng-change="mainDashboard.openAllPanels()">显示全部</md-switch><span ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" ng-show="panel.status=='fullscreen'" class="animated fadeInDown">{{panel.name}}</span><span flex="flex"></span>
+    <md-switch ng-hide="true" flex="none" layout="row" layout-align="start center" ng-model="mainDashboard.allPanelsShownButton.status" ng-disabled="mainDashboard.allPanelsShownButton.disable" ng-change="mainDashboard.openAllPanels()">显示全部</md-switch><span ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" ng-class="{'fadeInDown':panel.status=='fullscreen','fadeOutDown':panel.status!='fullscreen'}" ng-show="panel.status=='fullscreen'" class="animated">{{panel.name}}</span><span flex="flex"></span>
     <md-switch flex="none" layout="row" layout-align="start center" ng-repeat="(panelKey,panel) in mainDashboard.topPanelStatus" ng-model="mainDashboard.topPanelStatus[panelKey].show" ng-disabled="panel.disable">{{panel.name}}</md-switch>
     <md-switch flex="none" layout="row" layout-align="start center" ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" ng-model="mainDashboard.panelStatus[panelKey].show" ng-disabled="panel.disable" ng-change="mainDashboard.changePanelStatus(mainDashboard.panelStatus,panelKey)">{{panel.name}}</md-switch>
   </div>

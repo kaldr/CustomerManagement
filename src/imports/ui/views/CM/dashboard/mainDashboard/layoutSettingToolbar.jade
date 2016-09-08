@@ -8,8 +8,9 @@ md-toolbar.panelSetting(flex='none' layout='row' layout-align='start center' hid
       ng-model="mainDashboard.allPanelsShownButton.status"
       ng-disabled='mainDashboard.allPanelsShownButton.disable'
       ng-change='mainDashboard.openAllPanels()') 显示全部
-    span.animated.fadeInDown(
+    span.animated(
       ng-repeat="(panelKey,panel) in mainDashboard.panelStatus" 
+      ng-class="{'fadeInDown':panel.status=='fullscreen','fadeOutDown':panel.status!='fullscreen'}"
       ng-show="panel.status=='fullscreen'"
       ) {{panel.name}}
     span(flex)

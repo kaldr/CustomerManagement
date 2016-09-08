@@ -16,6 +16,7 @@ class expandablePanel
         # angular.element $window
         #   .bind 'resize', () -> this.onResize()
     #尺寸改变
+
     onResize: () ->
       height = angular.element $window
         .height() - 352
@@ -26,6 +27,13 @@ class expandablePanel
       angular.element '.simpleListContent'
         .height height
       true
+    #恢复面板
+    recoverPanel: () =>
+      for panelName, panelItem of this.panel
+        this.panel[panelName].status = 'list'
+        this.panel[panelName].show = true
+      this.panelmode = 'list'
+      false
     #隐藏面板
     hidePanel: () =>
         this.panel[this.ID].status = 'hidden'
