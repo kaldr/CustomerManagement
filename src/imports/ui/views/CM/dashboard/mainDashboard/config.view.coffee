@@ -5,7 +5,7 @@ exports.mainDashboardConfig =
     basicCustomerData:
       status: "list"#状态
       show: true#是否显示
-      name: "数据看板"#名称
+      name: "客户数据"#名称
       disable: false#是否可以操作
     basicCustomerStatistic:
       status: "list"

@@ -9,8 +9,8 @@ class recentUserTaskCtrl extends expandablePanel
       title: "动态"
       color: "grey"
       chartTitle: "今日操作统计"
-    constructor: ($reactive, $scope, $window) ->
-        super name, this.config(), $reactive, $scope, $window
+    constructor: ($reactive, $scope, $window, $element) ->
+        super name, this.config(), $reactive, $scope, $window, $element
         this.chart = chartConfig.basicChart
     showMenu: ($mdOpenMenu, ev) ->
         originatorEv = ev;

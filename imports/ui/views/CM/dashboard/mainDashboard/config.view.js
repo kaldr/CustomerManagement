@@ -6,7 +6,7 @@ exports.mainDashboardConfig = {
     basicCustomerData: {
       status: "list",
       show: true,
-      name: "数据看板",
+      name: "客户数据",
       disable: false
     },
     basicCustomerStatistic: {

@@ -16,18 +16,8 @@
           </md-button>
         </md-menu-item>
       </md-menu-content>
-    </md-menu><span flex="flex" align="center" ng-hide="$ctrl.panelmode=='fullscreen'" ng-class1="{'fadeOutRight':$ctrl.panelmode=='fullscreen','fadeInLeft':$ctrl.panelmode!='fullscreen'}" class="animated">{{$ctrl.theme.title}}</span><span flex="flex" align="left" ng-show="$ctrl.panelmode=='fullscreen'" ng-class1="{'fadeOutRight':$ctrl.panelmode!='fullscreen','fadeInLeft':$ctrl.panelmode=='fullscreen'}" class="animated">
-      <md-input-container>
-        <label>分配状态</label>
-        <md-select ng-model="selectedVegetables" md-on-close="clearSearchTerm()" data-md-container-class="selectdemoSelectHeader" multiple="multiple">
-          <md-select-header class="demo-select-header">
-            <input md-text="md-text" ng-model="searchTerm" type="search" placeholder="Search for a vegetable.." class="demo-header-searchbox"/>
-          </md-select-header>
-          <md-optgroup label="vegetables">
-            <md-option ng-value="vegetable" ng-repeat="vegetable in vegetables | filter:searchTerm">{{vegetable}}</md-option>
-          </md-optgroup>
-        </md-select>
-      </md-input-container></span>
+    </md-menu>
+    <section ng-cloak="ng-cloak" flex="flex" align="center" ng-hide="$ctrl.panelmode=='fullscreen'" class="panelToolbar">{{$ctrl.theme.title}}      </section>
     <md-menu flex="flex" align="right">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
         <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">desktop_windows</md-icon>

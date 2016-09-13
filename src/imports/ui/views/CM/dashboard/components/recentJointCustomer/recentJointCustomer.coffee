@@ -3,9 +3,9 @@ name = 'recentJointCustomer'
 {expandablePanel, template} = require '/imports/ui/layout/panel/expandablePanel/expandablePanel'
 
 class recentJointCustomerCtrl extends expandablePanel
-  constructor: ($reactive, $scope, $window) ->
+  constructor: ($reactive, $scope, $window, $element) ->
     config = this.config()
-    super name, config, $reactive, $scope, $window
+    super name, config, $reactive, $scope, $window, $element
     this.chart = chartConfig.basicChart
     template = this.template
   config: () ->

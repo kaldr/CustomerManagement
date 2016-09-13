@@ -13,37 +13,69 @@ md-toolbar.navi
       margin-right 20px
       i.fa.fa-search
         font-size:1.3em
-md-switch
-  font-size 0.6em
-  .md-label
-    span
-      color #555
-  .md-thumb
-      top 3px
-      height 15px
-      width 15px
-      background-color rgb(150,150,150)
-  .md-bar
-      top 7px
-      height 10px
-      width 30px
-      background-color #555
+.panelSetting
+  md-switch
+    font-size 0.6em
+    .md-label
+      span
+        color #555
+    .md-thumb
+        top 3px
+        height 15px
+        width 15px
+        background-color rgb(150,150,150)
+    .md-bar
+        top 7px
+        height 10px
+        width 30px
+        background-color #555
 
-md-switch.md-checked
-  .md-thumb
-      background-color white
-  .md-bar
-      background-color #555
-  .md-label
-    span
-      color white
-md-switch[disabled]
-  .md-bar
-    background-color: #444
-  .md-thumb
-    background-color: #575757
+  md-switch.md-checked
+    .md-thumb
+        background-color white
+    .md-bar
+        background-color #555
+    .md-label
+      span
+        color white
+  md-switch[disabled]
+    .md-bar
+      background-color: #444
+    .md-thumb
+      background-color: #575757
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak 
+#panelFilter.ng-animate
+.panelToolbar.ng-animate
+   -webkit-animation: none 0s
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
   display: none !important;
+
+
+.selectdemoSelectHeader {
+  /* Please note: All these selectors are only applied to children of elements with the 'selectdemoSelectHeader' class */ }
+  .selectdemoSelectHeader .demo-header-searchbox {
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    padding: 0; }
+  .selectdemoSelectHeader .demo-select-header {
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+    padding-left: 10.667px;
+    height: 48px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: auto; }
+  .selectdemoSelectHeader md-content._md {
+    max-height: 240px; }
+
+
+/*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+*/
 
 @import './dashboard/mainDashboard/mainDashboard.styl'

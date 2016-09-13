@@ -7,23 +7,37 @@ angular = require('angular');
 menuConfig = require('./config.view').menuConfig;
 
 expandablePanel = (function() {
-  function expandablePanel(name, config, $reactive, $scope, $window) {
+  expandablePanel.prototype.fixInputInSelect = function() {
+    angular.element('input#gameInput').on('keydown', function(ev) {
+      return ev.stopPropagation();
+    });
+    return false;
+  };
+
+  function expandablePanel(name, config, $reactive, $scope, $window, $element) {
     this.configuration = bind(this.configuration, this);
     this.loadPanelFullScreen = bind(this.loadPanelFullScreen, this);
     this.showPanel = bind(this.showPanel, this);
     this.fullScreenPanel = bind(this.fullScreenPanel, this);
     this.hidePanel = bind(this.hidePanel, this);
     this.recoverPanel = bind(this.recoverPanel, this);
+    this.clearSearchTerm = bind(this.clearSearchTerm, this);
+    this.fixInputInSelect = bind(this.fixInputInSelect, this);
     $reactive(this).attach($scope);
     this.lastPanelStatus = 'list';
     this.ID = name;
     this.theme = {};
     this.menu = menuConfig(this);
+    this.searchTerm = '';
     if (config) {
       this.configuration(config);
     }
     this.template = template;
   }
+
+  expandablePanel.prototype.clearSearchTerm = function() {
+    return this.searchTerm = '';
+  };
 
   expandablePanel.prototype.onResize = function() {
     var height;
@@ -72,6 +86,7 @@ expandablePanel = (function() {
     this.lastPanelStatus = 'fullscreen';
     this.loadPanelFullScreen();
     this.panelmode = 'fullscreen';
+    this.fixInputInSelect();
     return false;
   };
 

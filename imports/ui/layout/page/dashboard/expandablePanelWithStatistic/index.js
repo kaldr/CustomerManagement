@@ -10,6 +10,8 @@ expandablePanelWithStatistic = (function() {
     if (config) {
       this.configuration(config);
     }
+    this.filter = {};
+    this.filertInput = {};
   }
 
   expandablePanelWithStatistic.prototype.configuration = function(config) {};

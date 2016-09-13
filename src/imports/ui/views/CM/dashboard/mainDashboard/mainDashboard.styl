@@ -23,14 +23,34 @@
     border-top-color: rgba(0,0,0,0.2)
     border-right-color:rgba(0,0,0,0.2)
     border-left-color:rgba(0,0,0,0.2)
-
+md-content
+  background-color: white
 md-toolbar.panelSetting
   min-height 32px
   height 32px
   .md-toolbar-tools
     height 32px
 
+#panelFilter
+  background-color white
+  border-top 1px solid #eee
+  padding 0 16px
 
+  .filterSecondRow
+      span.spanTip
+        margin-right 16px
+      span.selectSpan
+        margin-right 10px
+    md-select-value
+      span
+        color rgba(0,0,0,0.7)
+  md-input-container
+    label
+      color rgba(0,0,0,0.7)
+    .md-errors-spacer
+      display:none
+    .md-placeholder
+      color rgba(0,0,0,0.7)
 @import '../components/basicCustomerData/basicCustomerData.styl'
 @import '../components/basicCustomerStatistic/basicCustomerStatistic.styl'
-@import '../components/list/simpleList/recentTaskComplishStatus/recentTaskComplishStatus.styl'
+@import '../components/recentTaskComplishStatus/recentTaskComplishStatus.styl'

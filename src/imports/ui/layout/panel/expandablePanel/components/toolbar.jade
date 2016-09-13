@@ -1,4 +1,4 @@
-md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}" )
+md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}")
   .md-toolbar-tools(layout='row' layout-align='space-between center')
     md-menu(flex align='left')
       md-button.md-icon-button(ng-click='$mdOpenMenu()')
@@ -13,21 +13,8 @@ md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}
             md-icon {{menuitem.icon}}
             |{{menuitem.title}}
             
-    span.animated(flex align='center' ng-hide="$ctrl.panelmode=='fullscreen'" ng-class1="{'fadeOutRight':$ctrl.panelmode=='fullscreen','fadeInLeft':$ctrl.panelmode!='fullscreen'}") {{$ctrl.theme.title}}
-    span.animated(flex align='left' ng-show="$ctrl.panelmode=='fullscreen'" ng-class1="{'fadeOutRight':$ctrl.panelmode!='fullscreen','fadeInLeft':$ctrl.panelmode=='fullscreen'}")
-      md-input-container
-        label 分配状态
-        md-select(ng-model="selectedVegetables"
-                   md-on-close="clearSearchTerm()"
-                   data-md-container-class="selectdemoSelectHeader"
-                   multiple)
-          md-select-header.demo-select-header
-            input.demo-header-searchbox(md-text ng-model="searchTerm"
-                  type="search"
-                  placeholder="Search for a vegetable..")
-          md-optgroup(label="vegetables")
-            md-option(ng-value="vegetable" ng-repeat="vegetable in vegetables | filter:searchTerm") {{vegetable}}
-
+    section.panelToolbar(ng-cloak flex align='center' ng-hide="$ctrl.panelmode=='fullscreen'") {{$ctrl.theme.title}}      
+        
     md-menu(flex align='right')
       md-button.md-icon-button(ng-click='$mdOpenMenu()')
         md-icon(md-colors="{color:'grey-500'}" md-menu-origin ng-click='$mdOpenMenu()') desktop_windows

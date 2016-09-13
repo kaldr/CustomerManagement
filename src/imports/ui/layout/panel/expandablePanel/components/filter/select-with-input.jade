@@ -1,0 +1,13 @@
+md-input-container
+  label {{filter.label}}
+  md-select(ng-model="$ctrl.filter[filterID]"
+            md-on-close="$ctrl.clearSearchTerm()"
+            data-md-container-class="selectdemoSelectHeader"
+            )
+    md-select-header.demo-select-header
+      input#gameInput.demo-header-searchbox(
+        ng-model="$ctrl.searchTerm"
+        type="search"
+        placeholder="{{filter.placeHolder}}")
+    md-optgroup(label="{{filter.label}}")
+      md-option(ng-value="option.value" ng-repeat="option in filter.options|filter:$ctrl.searchTerm") {{option.key}}

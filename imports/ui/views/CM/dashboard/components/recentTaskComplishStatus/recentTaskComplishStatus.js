@@ -1,4 +1,4 @@
-var chartConfig, expandablePanel, name, recentTaskComplishStatusCtrl, ref, template,
+var chartConfig, expandablePanel, filter, name, recentTaskComplishStatusCtrl, ref, template,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -7,6 +7,8 @@ name = 'recentTaskComplishStatus';
 ref = require('/imports/ui/layout/panel/expandablePanel/expandablePanel'), expandablePanel = ref.expandablePanel, template = ref.template;
 
 chartConfig = require('./config.chart').chartConfig;
+
+filter = require('./config.filter').filter;
 
 recentTaskComplishStatusCtrl = (function(superClass) {
   extend(recentTaskComplishStatusCtrl, superClass);
@@ -22,11 +24,10 @@ recentTaskComplishStatusCtrl = (function(superClass) {
     };
   };
 
-  function recentTaskComplishStatusCtrl($reactive, $scope, $window) {
+  function recentTaskComplishStatusCtrl($reactive, $scope, $window, $element) {
     var config;
     config = this.config();
-    recentTaskComplishStatusCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window);
-    $reactive(this).attach($scope);
+    recentTaskComplishStatusCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window, $element);
     this.tasks = {
       finished: {
         total: 210,
@@ -49,6 +50,7 @@ recentTaskComplishStatusCtrl = (function(superClass) {
     };
     this.complishRate = 85.2;
     this.chart = chartConfig.basicChart;
+    this.filters = filter;
   }
 
   return recentTaskComplishStatusCtrl;

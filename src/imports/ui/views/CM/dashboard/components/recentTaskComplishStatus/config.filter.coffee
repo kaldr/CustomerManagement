@@ -1,23 +1,36 @@
 exports.filter =
-  leftSelect:
+  rightSwitch:
+    onlyMine:
+      name: '仅显示我的任务'
+      valueTrue: true
+      valueFalse: false
+      default: false
+      info: "是否仅显示我的任务"
+    onlyStarred:
+      name: '仅显示加星'
+      valueTrue: true
+      valueFalse: false
+      default: false
+      info: "是否仅显示加星条目"
+  bottomSelect:
     assignStatus:
-      label: "分配状态"
+      label: "分配"
       multiSelect: true
       placeHolder: "请选择一个或者多个分配状态"
       options: [
         {
-          key: '未分配'
+          key: '未分配给他人'
           value: "0"
           info: "还没有"
         }
         {
-          key: "已分配"
+          key: "已分配给他人"
           value: "1"
         }
       ]
     finishStatus:
-      label: "完成状态"
-      placeHolder: "请选择一个分配状态"
+      label: "进度"
+      placeHolder: "请选择一个完成状态"
       options: [
         {
           key: "未开始"
@@ -46,22 +59,22 @@ exports.filter =
         }
       ]
     acceptStatus:
-      label: "对方是否接受"
-      placeHolder: "请选择一个分配接受状态"
+      label: "接收"
+      placeHolder: "请选择对方接受状态"
       options: [
         {
-          key: "未接受"
+          key: "对方未接受"
           value: "0"
           info: "对方尚未接受此任务"
         }
         {
-          key: "已接受"
+          key: "对方已接受"
           value: "1"
           info: "对方已接受此任务"
         }
       ]
     assessment:
-      label: "对方评分"
+      label: "评分"
       placeHolder: "请选择一个对方的评分"
       options: [
         {
@@ -119,6 +132,7 @@ exports.filter =
     department:
       label: '部门'
       placeHolder: "请选择部门"
+      input: true
       multiSelect: true
       options: [
         {
@@ -131,8 +145,14 @@ exports.filter =
     staff:
       label: "职员"
       placeHolder: "请选择职员"
-      multiSelect: true
+      input: true
+
       #api: ""
   input:
     search:
-      placeHolder: '输入任何想查询内容'
+      type: 'text'
+      label: '输入任何想查询内容'
+      icon: 'search'
+      placeHolder: ''
+    taskFromDate:
+      type: "date"

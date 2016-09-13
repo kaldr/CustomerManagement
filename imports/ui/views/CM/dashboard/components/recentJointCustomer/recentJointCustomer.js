@@ -11,10 +11,10 @@ ref = require('/imports/ui/layout/panel/expandablePanel/expandablePanel'), expan
 recentJointCustomerCtrl = (function(superClass) {
   extend(recentJointCustomerCtrl, superClass);
 
-  function recentJointCustomerCtrl($reactive, $scope, $window) {
+  function recentJointCustomerCtrl($reactive, $scope, $window, $element) {
     var config;
     config = this.config();
-    recentJointCustomerCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window);
+    recentJointCustomerCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window, $element);
     this.chart = chartConfig.basicChart;
     template = this.template;
   }

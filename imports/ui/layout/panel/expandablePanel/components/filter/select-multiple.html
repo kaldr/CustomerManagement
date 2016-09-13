@@ -1,0 +1,9 @@
+
+<md-input-container>
+  <label>{{filter.label}}</label>
+  <md-select ng-model="$ctrl.filter[filterID]" multiple="multiple">
+    <md-optgroup label="{{filter.label}}">
+      <md-option ng-value="option.value" ng-repeat="option in filter.options">{{option.key}}</md-option>
+    </md-optgroup>
+  </md-select>
+</md-input-container>

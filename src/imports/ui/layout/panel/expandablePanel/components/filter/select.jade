@@ -1,0 +1,7 @@
+md-input-container
+  label {{filter.label}}
+  md-select(ng-model="$ctrl.filter[filterID]")
+     md-optgroup(label="{{filter.label}}")
+       md-option(ng-value="option.value" ng-repeat="option in filter.options") {{option.key}}
+
+         

@@ -4,6 +4,8 @@ class expandablePanelWithStatistic
       .attach $scope
     if config
       this.configuration config
+    this.filter = {}
+    this.filertInput = {}
   #config
   configuration: (config) =>
 

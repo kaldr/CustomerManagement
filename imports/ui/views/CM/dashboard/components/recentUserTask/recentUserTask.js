@@ -19,8 +19,8 @@ recentUserTaskCtrl = (function(superClass) {
     };
   };
 
-  function recentUserTaskCtrl($reactive, $scope, $window) {
-    recentUserTaskCtrl.__super__.constructor.call(this, name, this.config(), $reactive, $scope, $window);
+  function recentUserTaskCtrl($reactive, $scope, $window, $element) {
+    recentUserTaskCtrl.__super__.constructor.call(this, name, this.config(), $reactive, $scope, $window, $element);
     this.chart = chartConfig.basicChart;
   }
 
