@@ -48,7 +48,7 @@ expandablePanel = (function() {
     if (!this.panel.basicCustomerStatistic.show) {
       height += 70;
     }
-    angular.element('.simpleListContent').height(height);
+    angular.element('md-content.expandablePanel').height(height);
     return true;
   };
 
@@ -120,16 +120,32 @@ expandablePanel = (function() {
   };
 
   expandablePanel.prototype.configuration = function(config) {
-    var themeConfig;
+    var filterConfig, menusConfig, themeConfig;
     themeConfig = (function(_this) {
       return function() {
-        _this.theme.toolbarColor = config.color === 'grey' ? 'grey-200' : 'grey-100';
-        _this.theme.listColor = config.color === 'grey' ? 'grey-100' : 'grey-A100';
+        _this.theme.toolbarColor = config.color === 'grey' ? 'grey-100' : 'grey-50';
+        _this.theme.listColor = config.color === 'grey' ? 'grey-50' : 'grey-A100';
         _this.theme.title = config.title ? config.title : '列表';
         return _this.theme.chartTitle = config.chartTitle ? config.chartTitle : '统计';
       };
     })(this);
-    return themeConfig();
+    filterConfig = (function(_this) {
+      return function() {
+        if (config.filter) {
+          return _this.filters = config.filter;
+        }
+      };
+    })(this);
+    menusConfig = (function(_this) {
+      return function() {
+        if (config.menu) {
+          return _this.menus = config.menu;
+        }
+      };
+    })(this);
+    themeConfig();
+    filterConfig();
+    return menusConfig();
   };
 
   return expandablePanel;

@@ -1,5 +1,6 @@
+
 include ./layoutSettingToolbar.jade
 md-content(flex layout-fill layout='column')
-  basic-customer-data.basicCustomerData(ng-show="mainDashboard.topPanelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
-  basic-customer-statistic.basic-customer-statistic(ng-show="mainDashboard.topPanelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')
   include ./basicLayout.jade
+basic-customer-data.basicCustomerData.animated(md-colors="{'background':'blue-grey-800'}" ng-class="{'fadeOutDown':!mainDashboard.panelStatus.basicCustomerData.show,'fadeInUp':mainDashboard.panelStatus.basicCustomerData.show}" ng-show="mainDashboard.panelStatus.basicCustomerData.show" flex='none' layout-wrap layout='row' layout-align='space-around center')
+basic-customer-statistic.basic-customer-statistic.animated(md-colors="{'background':'blue-grey-900'}" ng-class="{'fadeOutDown':!mainDashboard.topPanelStatus.basicCustomerStatistic.show,'fadeInUp':mainDashboard.topPanelStatus.basicCustomerStatistic.show}" ng-show="mainDashboard.topPanelStatus.basicCustomerStatistic.show" flex='none' layout='row'  layout-align='center end')

@@ -1,29 +1,33 @@
 
-<md-toolbar md-scroll-shrink="md-scroll-shrink" md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}">
-  <div layout="row" layout-align="space-between center" class="md-toolbar-tools">
+<md-toolbar md-scroll-shrink="md-scroll-shrink" md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}" ng-show="$ctrl.panel[$ctrl.ID].show" layout-align="center center">
+  <div layout="row" layout-align="space-between center" class="md-toolbar-tools expandablePanelToolbar">
     <md-menu flex="flex" align="left">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
-        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin">menu</md-icon>
+        <md-icon md-colors="{color:'grey-300'}" md-menu-origin="md-menu-origin">menu</md-icon>
         <md-tooltip>菜单</md-tooltip>
       </md-button>
-      <md-menu-content width="3">
-        <md-menu-item ng-repeat="menuitem in $ctrl.menu.action">
-          <md-button ng-class="menuitem.name" ng-disabled="menuitem.name==$ctrl.panel[$ctrl.ID].status" ng-if="menuitem.target" md-menu-align-target="md-menu-align-target" ng-click="menuitem[&quot;action&quot;]()"> 
-            <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
-          </md-button>
-          <md-button ng-class="menuitem.name" ng-disabled="menuitem.name==$ctrl.panel[$ctrl.ID].status" ng-if="menuitem.target==false" ng-click="menuitem[&quot;action&quot;]()"> 
-            <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}
+      <md-menu-content width="4">
+        <md-menu-item ng-repeat="(menuID,menuitem) in $ctrl.menus">
+          <md-button ng-class="menuitem.name" ng-click="menuitem[&quot;click&quot;]()"> 
+            <md-icon md-colors="{color:'blue-300'}">{{menuitem.icon}}</md-icon>{{menuitem.name}}
           </md-button>
         </md-menu-item>
       </md-menu-content>
     </md-menu>
-    <section ng-cloak="ng-cloak" flex="flex" align="center" ng-hide="$ctrl.panelmode=='fullscreen'" class="panelToolbar">{{$ctrl.theme.title}}      </section>
+    <section ng-cloak="ng-cloak" flex="flex" align="center" ng-hide="$ctrl.panelmode=='fullscreen'" class="panelToolbarTitle">{{$ctrl.theme.title}}      </section>
+    <section ng-cloak="ng-cloak" flex="flex" align="center" layout="row" layout-align="center center" ng-show="$ctrl.panelmode=='fullscreen'" class="panelToolbarButtons"> 
+      <div layout="row" ng-repeat="(menuName,menu) in $ctrl.menus" ng-show="menu.showInToolbar" class="menuButton">
+        <md-button>
+          <md-icon md-colors="{color:'blue-300'}">{{menu.icon}}</md-icon>{{menu.name}}
+        </md-button>
+      </div>
+    </section>
     <md-menu flex="flex" align="right">
       <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
-        <md-icon md-colors="{color:'grey-500'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">desktop_windows</md-icon>
+        <md-icon md-colors="{color:'grey-300'}" md-menu-origin="md-menu-origin" ng-click="$mdOpenMenu()">desktop_windows</md-icon>
         <md-tooltip>显示</md-tooltip>
       </md-button>
-      <md-menu-content width="3">
+      <md-menu-content width="4">
         <md-menu-item ng-repeat="menuitem in $ctrl.menu.display">
           <md-button ng-class="menuitem.name" ng-disabled="menuitem.name==$ctrl.panel[$ctrl.ID].status" ng-if="menuitem.target" md-menu-align-target="md-menu-align-target" ng-click="menuitem[&quot;action&quot;]()"> 
             <md-icon>{{menuitem.icon}}</md-icon>{{menuitem.title}}

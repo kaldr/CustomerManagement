@@ -3,6 +3,7 @@
 .basicCustomerData
 .basic-customer-statistic
   -webkit-transition: -webkit-flex 250ms linear
+
 .recentData
   flex: 1 0 auto !important
   recent-task-complish-status.recentTaskComplishStatus
@@ -32,10 +33,13 @@ md-toolbar.panelSetting
     height 32px
 
 #panelFilter
-  background-color white
-  border-top 1px solid #eee
+  flex: 1 0 auto !important
+  font-size 14px
+  border-top 1px solid #CFD8DC
+  border-bottom 1px solid #CFD8DC
   padding 0 16px
-
+  // .filterFirstRow
+  //   background-color
   .filterSecondRow
       span.spanTip
         margin-right 16px
@@ -51,6 +55,55 @@ md-toolbar.panelSetting
       display:none
     .md-placeholder
       color rgba(0,0,0,0.7)
+
+.expandablePanelToolbar
+  height 24px
+  font-size 16px
+
+  md-menu
+    margin-top -8px
+  .panelToolbarButtons
+    md-icon
+      margin-right 4px
+
+#panelFilter
+  md-datepicker
+    padding-right 0
+    margin-right 0
+    .md-datepicker-input-container
+      margin-left 0
+  label.datepicker
+      left 88px
+  md-switch
+    font-size 0.6em
+    .md-label
+      span
+        color #555
+    .md-thumb
+        top 3px
+        height 15px
+        width 15px
+        background-color rgb(150,150,150)
+    .md-bar
+        top 7px
+        height 10px
+        width 30px
+        background-color #555
+
+  md-switch.md-checked
+    .md-thumb
+        background-color rgb(100,181,246)
+    .md-bar
+        background-color #1976D2
+    .md-label
+      span
+        color #1976D2
+  md-switch[disabled]
+    .md-bar
+      background-color: #444
+    .md-thumb
+      background-color: #575757
+
 @import '../components/basicCustomerData/basicCustomerData.styl'
 @import '../components/basicCustomerStatistic/basicCustomerStatistic.styl'
 @import '../components/recentTaskComplishStatus/recentTaskComplishStatus.styl'

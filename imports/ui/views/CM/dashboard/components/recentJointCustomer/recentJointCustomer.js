@@ -1,4 +1,4 @@
-var chartConfig, expandablePanel, name, recentJointCustomerCtrl, ref, template,
+var chartConfig, expandablePanel, filter, name, recentJointCustomerCtrl, ref, template,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -7,6 +7,8 @@ name = 'recentJointCustomer';
 chartConfig = require('./config.chart').chartConfig;
 
 ref = require('/imports/ui/layout/panel/expandablePanel/expandablePanel'), expandablePanel = ref.expandablePanel, template = ref.template;
+
+filter = require('./config.filter').filter;
 
 recentJointCustomerCtrl = (function(superClass) {
   extend(recentJointCustomerCtrl, superClass);
@@ -22,7 +24,8 @@ recentJointCustomerCtrl = (function(superClass) {
   recentJointCustomerCtrl.prototype.config = function() {
     return {
       title: '顾客',
-      chartTitle: "顾客统计"
+      chartTitle: "顾客统计",
+      filter: filter
     };
   };
 

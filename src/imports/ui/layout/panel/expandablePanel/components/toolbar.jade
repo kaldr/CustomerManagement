@@ -1,25 +1,29 @@
-md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}")
-  .md-toolbar-tools(layout='row' layout-align='space-between center')
-    md-menu(flex align='left')
+
+md-toolbar(md-scroll-shrink md-colors="{background:'{{$ctrl.theme.toolbarColor}}'}" ng-show="$ctrl.panel[$ctrl.ID].show" layout-align="center center")
+  .md-toolbar-tools.expandablePanelToolbar(layout='row' layout-align='space-between center')
+    md-menu(flex align='left' )
       md-button.md-icon-button(ng-click='$mdOpenMenu()')
-        md-icon(md-colors="{color:'grey-500'}" md-menu-origin) menu
+        md-icon(md-colors="{color:'grey-300'}" md-menu-origin) menu
         md-tooltip 菜单
-      md-menu-content(width=3)
-        md-menu-item(ng-repeat='menuitem in $ctrl.menu.action')
-          md-button(ng-class='menuitem.name' ng-disabled='menuitem.name==$ctrl.panel[$ctrl.ID].status' ng-if='menuitem.target' md-menu-align-target ng-click='menuitem["action"]()') 
-            md-icon {{menuitem.icon}}
-            |{{menuitem.title}}
-          md-button(ng-class='menuitem.name' ng-disabled='menuitem.name==$ctrl.panel[$ctrl.ID].status' ng-if='menuitem.target==false' ng-click='menuitem["action"]()') 
-            md-icon {{menuitem.icon}}
-            |{{menuitem.title}}
+      md-menu-content(width=4)
+        md-menu-item(ng-repeat='(menuID,menuitem) in $ctrl.menus')
+          md-button(ng-class='menuitem.name' ng-click='menuitem["click"]()') 
+            md-icon(md-colors="{color:'blue-300'}") {{menuitem.icon}}
+            |{{menuitem.name}}
             
-    section.panelToolbar(ng-cloak flex align='center' ng-hide="$ctrl.panelmode=='fullscreen'") {{$ctrl.theme.title}}      
-        
+    section.panelToolbarTitle(ng-cloak flex align='center' ng-hide="$ctrl.panelmode=='fullscreen'") {{$ctrl.theme.title}}      
+    
+    section.panelToolbarButtons(ng-cloak flex align='center' layout='row' layout-align="center center" ng-show="$ctrl.panelmode=='fullscreen'") 
+      .menuButton(layout='row' ng-repeat="(menuName,menu) in $ctrl.menus" ng-show="menu.showInToolbar")
+        md-button
+          md-icon(md-colors="{color:'blue-300'}") {{menu.icon}}
+          |{{menu.name}}
+          
     md-menu(flex align='right')
       md-button.md-icon-button(ng-click='$mdOpenMenu()')
-        md-icon(md-colors="{color:'grey-500'}" md-menu-origin ng-click='$mdOpenMenu()') desktop_windows
+        md-icon(md-colors="{color:'grey-300'}" md-menu-origin ng-click='$mdOpenMenu()') desktop_windows
         md-tooltip 显示
-      md-menu-content(width=3)
+      md-menu-content(width=4)
         md-menu-item(ng-repeat='menuitem in $ctrl.menu.display')
           md-button(ng-class='menuitem.name' ng-disabled='menuitem.name==$ctrl.panel[$ctrl.ID].status' ng-if='menuitem.target' md-menu-align-target ng-click='menuitem["action"]()') 
             md-icon {{menuitem.icon}}

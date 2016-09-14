@@ -19,6 +19,7 @@ class expandablePanel
         this.searchTerm = ''
         if config then this.configuration(config)
         this.template = template
+
         # input = $element.find 'input.demo-header-searchbox'
         # input.on 'keydown', (ev) ->
         #     console.log ev
@@ -36,7 +37,7 @@ class expandablePanel
         height += 120
       if not this.panel.basicCustomerStatistic.show
         height += 70
-      angular.element '.simpleListContent'
+      angular.element 'md-content.expandablePanel'
         .height height
       true
     #恢复面板
@@ -77,11 +78,23 @@ class expandablePanel
     configuration: (config) =>
       #界面与主题配置
       themeConfig = () =>
-        this.theme.toolbarColor = if config.color == 'grey' then 'grey-200' else 'grey-100'
-        this.theme.listColor = if config.color == 'grey' then 'grey-100' else 'grey-A100'
+        this.theme.toolbarColor = if config.color == 'grey' then 'grey-100' else 'grey-50'
+        this.theme.listColor = if config.color == 'grey' then 'grey-50' else 'grey-A100'
         this.theme.title = if config.title then config.title else '列表'
         this.theme.chartTitle = if config.chartTitle then config.chartTitle else '统计'
+      #搜索与筛选条件
+      filterConfig = () =>
+        if config.filter
+          this.filters = config.filter
+      #菜单与操作按钮
+      menusConfig = () =>
+        if config.menu
+          this.menus = config.menu
+
       themeConfig()
+      filterConfig()
+      menusConfig()
+
 
 exports.expandablePanel = expandablePanel
 exports.template = template

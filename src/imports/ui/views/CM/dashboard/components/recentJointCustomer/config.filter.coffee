@@ -157,7 +157,3 @@ exports.filter =
       placeHolder: ''
     taskFromDate:
       type: "date"
-      label: "任务开始时间"
-    taskDueDate:
-      type: "date"
-      label: "任务结束时间"

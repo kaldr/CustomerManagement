@@ -1,4 +1,5 @@
-var chartConfig, expandablePanel, filter, name, recentTaskComplishStatusCtrl, ref, template,
+var chartConfig, expandablePanel, filter, menu, name, recentTaskComplishStatusCtrl, ref, template,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -10,6 +11,8 @@ chartConfig = require('./config.chart').chartConfig;
 
 filter = require('./config.filter').filter;
 
+menu = require('./config.menu').menu;
+
 recentTaskComplishStatusCtrl = (function(superClass) {
   extend(recentTaskComplishStatusCtrl, superClass);
 
@@ -20,11 +23,14 @@ recentTaskComplishStatusCtrl = (function(superClass) {
 
   recentTaskComplishStatusCtrl.prototype.config = function() {
     return {
-      title: "任务"
+      title: "任务",
+      filter: filter,
+      menu: menu(this)
     };
   };
 
   function recentTaskComplishStatusCtrl($reactive, $scope, $window, $element) {
+    this.config = bind(this.config, this);
     var config;
     config = this.config();
     recentTaskComplishStatusCtrl.__super__.constructor.call(this, name, config, $reactive, $scope, $window, $element);
@@ -50,7 +56,6 @@ recentTaskComplishStatusCtrl = (function(superClass) {
     };
     this.complishRate = 85.2;
     this.chart = chartConfig.basicChart;
-    this.filters = filter;
   }
 
   return recentTaskComplishStatusCtrl;

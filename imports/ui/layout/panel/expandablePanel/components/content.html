@@ -1,76 +1,79 @@
 
-<md-subheade id="panelFilter" md-colors="{background:'grey-50'}" layout-wrap="layout-wrap" layout="column" layout-align="center center" ng-class="{'fadeInDown':$ctrl.panelmode=='fullscreen'&amp;&amp;$ctrl.panel[$ctrl.ID].show}" ng-cloak="ng-cloak" flex="100" ng-show="$ctrl.panelmode=='fullscreen'&amp;&amp;$ctrl.panel[$ctrl.ID].show" class="animated">
-  <div layout="row" flex="100" class="filterFirstRow">
-    <md-input-container flex="flex" align="left" ng-repeat="(inputID,input) in $ctrl.filters.input">
-      <md-icon>{{input.icon}}</md-icon>
-      <label>{{input.label}}</label>
-      <input type="text"/>
-    </md-input-container><span flex="flex"></span><span flex="flex" layout="row" align="right" layout-align="center center">
-      <md-switch ng-show="$ctrl.filters.bottomSelect" ng-model="$ctrl.filter.showMoreFilter" class="rightSwitch md-primary">显示高级搜索</md-switch>
-      <md-switch ng-true-value="{{switch.valueTrue}}" ng-false-value="{{switch.valueFalse}}" ng-repeat="(switchKey,switch) in $ctrl.filters.rightSwitch" ng-model="$ctrl.filter[switchKey]" class="rightSwitch md-primary">{{switch.name}}
-        <md-tooltip>{{switch.info}}</md-tooltip>
-      </md-switch></span>
+<md-content layout="column" flex="flex" md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="expandablePanel">  
+  <div id="panelFilter" flex="none" md-colors="{background:'blue-grey-50'}" layout-wrap="layout-wrap" layout="column" layout-align="center center" ng-class="{'fadeInDown':$ctrl.panelmode=='fullscreen'&amp;&amp;$ctrl.panel[$ctrl.ID].show}" ng-cloak="ng-cloak" ng-show="$ctrl.panelmode=='fullscreen'&amp;&amp;$ctrl.panel[$ctrl.ID].show" class="animated">
+    <div layout="row" layout-align="space-around center" flex="100" class="filterFirstRow">
+      <md-input-container flex="flex" layout="row" ng-repeat="(inputID,input) in $ctrl.filters.input">
+        <md-icon ng-show="input.type=='text'">{{input.icon}}</md-icon>
+        <label ng-class="{'datepicker':input.type=='date'}">{{input.label}}</label>
+        <input type="text" ng-focus="$ctrl.filter.showMoreFilter=true" ng-if="input.type=='text'"/>
+        <md-datepicker ng-if="input.type=='date'" ng-model="$ctrl.filter[inputID]"></md-datepicker>
+      </md-input-container><span flex="flex"></span><span flex="flex" layout="row" align="right" layout-align="center center">
+        <md-switch ng-true-value="{{switch.valueTrue}}" ng-false-value="{{switch.valueFalse}}" ng-repeat="(switchKey,switch) in $ctrl.filters.rightSwitch" ng-model="$ctrl.filter[switchKey]" class="rightSwitch md-primary">{{switch.name}}
+          <md-tooltip>{{switch.info}}</md-tooltip>
+        </md-switch>
+        <md-switch ng-show="$ctrl.filters.bottomSelect" ng-model="$ctrl.filter.showMoreFilter" class="rightSwitch md-primary">显示高级搜索</md-switch></span>
+    </div>
+    <div layout="row" flex="100" layout-align="center center" ng-show="$ctrl.filters.bottomSelect&amp;&amp;$ctrl.filter.showMoreFilter" class="filterSecondRow"><span class="spanTip">筛选</span><span align="left" ng-repeat="(filterID,filter) in $ctrl.filters.bottomSelect" class="selectSpan"><span ng-if="filter.multiSelect &amp;&amp; filter.input">
+          <md-input-container>
+            <label>{{filter.label}}</label>
+            <md-select ng-model="$ctrl.filter[filterID]" md-on-close="$ctrl.clearSearchTerm()" data-md-container-class="selectdemoSelectHeader" multiple="multiple">
+              <md-select-header class="demo-select-header">
+                <input id="gameInput" ng-model="$ctrl.searchTerm" type="search" placeholder="{{filter.placeHolder}}" class="demo-header-searchbox"/>
+              </md-select-header>
+              <md-optgroup label="{{filter.label}}">
+                <md-option ng-value="option.value" ng-repeat="option in filter.options|filter:$ctrl.searchTerm">{{option.key}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container></span><span ng-if="!filter.multiSelect &amp;&amp; filter.input">
+          <md-input-container>
+            <label>{{filter.label}}</label>
+            <md-select ng-model="$ctrl.filter[filterID]" md-on-close="$ctrl.clearSearchTerm()" data-md-container-class="selectdemoSelectHeader">
+              <md-select-header class="demo-select-header">
+                <input id="gameInput" ng-model="$ctrl.searchTerm" type="search" placeholder="{{filter.placeHolder}}" class="demo-header-searchbox"/>
+              </md-select-header>
+              <md-optgroup label="{{filter.label}}">
+                <md-option ng-value="option.value" ng-repeat="option in filter.options|filter:$ctrl.searchTerm">{{option.key}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container></span><span ng-if="filter.multiSelect &amp;&amp; !filter.input">
+          <md-input-container>
+            <label>{{filter.label}}</label>
+            <md-select ng-model="$ctrl.filter[filterID]" multiple="multiple">
+              <md-optgroup label="{{filter.label}}">
+                <md-option ng-value="option.value" ng-repeat="option in filter.options">{{option.key}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container></span><span ng-if="!filter.multiSelect &amp;&amp; !filter.input">
+          <md-input-container>
+            <label>{{filter.label}}</label>
+            <md-select ng-model="$ctrl.filter[filterID]">
+              <md-optgroup label="{{filter.label}}">
+                <md-option ng-value="option.value" ng-repeat="option in filter.options">{{option.key}}</md-option>
+              </md-optgroup>
+            </md-select>
+          </md-input-container></span></span><span flex="flex"></span>
+      <md-button> 
+        <md-icon>sort </md-icon>排序
+      </md-button>
+    </div>
   </div>
-  <div layout="row" flex="100" layout-align="center center" ng-show="$ctrl.filters.bottomSelect&amp;&amp;$ctrl.filter.showMoreFilter" class="filterSecondRow"><span class="spanTip">筛选</span><span align="left" ng-repeat="(filterID,filter) in $ctrl.filters.bottomSelect" class="selectSpan"><span ng-if="filter.multiSelect &amp;&amp; filter.input">
-        <md-input-container>
-          <label>{{filter.label}}</label>
-          <md-select ng-model="$ctrl.filter[filterID]" md-on-close="$ctrl.clearSearchTerm()" data-md-container-class="selectdemoSelectHeader" multiple="multiple">
-            <md-select-header class="demo-select-header">
-              <input id="gameInput" ng-model="$ctrl.searchTerm" type="search" placeholder="{{filter.placeHolder}}" class="demo-header-searchbox"/>
-            </md-select-header>
-            <md-optgroup label="{{filter.label}}">
-              <md-option ng-value="option.value" ng-repeat="option in filter.options|filter:$ctrl.searchTerm">{{option.key}}</md-option>
-            </md-optgroup>
-          </md-select>
-        </md-input-container></span><span ng-if="!filter.multiSelect &amp;&amp; filter.input">
-        <md-input-container>
-          <label>{{filter.label}}</label>
-          <md-select ng-model="$ctrl.filter[filterID]" md-on-close="$ctrl.clearSearchTerm()" data-md-container-class="selectdemoSelectHeader">
-            <md-select-header class="demo-select-header">
-              <input id="gameInput" ng-model="$ctrl.searchTerm" type="search" placeholder="{{filter.placeHolder}}" class="demo-header-searchbox"/>
-            </md-select-header>
-            <md-optgroup label="{{filter.label}}">
-              <md-option ng-value="option.value" ng-repeat="option in filter.options|filter:$ctrl.searchTerm">{{option.key}}</md-option>
-            </md-optgroup>
-          </md-select>
-        </md-input-container></span><span ng-if="filter.multiSelect &amp;&amp; !filter.input">
-        <md-input-container>
-          <label>{{filter.label}}</label>
-          <md-select ng-model="$ctrl.filter[filterID]" multiple="multiple">
-            <md-optgroup label="{{filter.label}}">
-              <md-option ng-value="option.value" ng-repeat="option in filter.options">{{option.key}}</md-option>
-            </md-optgroup>
-          </md-select>
-        </md-input-container></span><span ng-if="!filter.multiSelect &amp;&amp; !filter.input">
-        <md-input-container>
-          <label>{{filter.label}}</label>
-          <md-select ng-model="$ctrl.filter[filterID]">
-            <md-optgroup label="{{filter.label}}">
-              <md-option ng-value="option.value" ng-repeat="option in filter.options">{{option.key}}</md-option>
-            </md-optgroup>
-          </md-select>
-        </md-input-container></span></span><span flex="flex"></span>
-    <md-button> 
-      <md-icon>sort </md-icon>排序
-    </md-button>
-  </div>
-</md-subheade>
-<md-content layout="column" flex="flex" md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="simpleListContent">  
-  <section>
-    <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-primary">{{$ctrl.theme.chartTitle}} </md-subheader>
-  </section>
-  <section>
-    <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
-    <md-list>
-      <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">
-        <div layout="column" class="md-list-item-text">
-          <h3>汪峰</h3>
-          <h4>北京，北京</h4>
-          <p>当我走在这里的每一条街道</p>
-        </div>
-      </md-list-item>
-    </md-list>
-  </section>
+  <md-content flex="flex">
+    <section>
+      <md-subheader md-colors="{background:'{{$ctrl.theme.listColor}}'}" class="md-primary">{{$ctrl.theme.chartTitle}} </md-subheader>
+    </section>
+    <section>
+      <basic-chart component="$ctrl.ID" config="$ctrl.chart"></basic-chart>
+      <md-list>
+        <md-list-item ng-repeat="item in [1,2,3,4,5,6]" ng-click="null" class="md-3-line md-long-text">
+          <div layout="column" class="md-list-item-text">
+            <h3>汪峰</h3>
+            <h4>北京，北京</h4>
+            <p>当我走在这里的每一条街道</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </section>
+  </md-content>
 </md-content>
 <!--rank-->
 <!--search-->

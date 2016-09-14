@@ -4,12 +4,15 @@ name = 'recentTaskComplishStatus'
 {expandablePanel, template} = require '/imports/ui/layout/panel/expandablePanel/expandablePanel'
 {chartConfig} = require './config.chart'
 {filter} = require './config.filter'
+{menu} = require './config.menu'
 
 class recentTaskComplishStatusCtrl extends expandablePanel
   closeList: (element) ->
     showRecentTaskComplishStatus = false
-  config: () ->
+  config: () =>
     title: "任务"
+    filter: filter
+    menu: menu(this)
   constructor: ($reactive, $scope, $window, $element) ->
     config = this.config()
     super name, config, $reactive, $scope, $window, $element
@@ -43,7 +46,7 @@ class recentTaskComplishStatusCtrl extends expandablePanel
         today: 3
     this.complishRate = 85.2
     this.chart = chartConfig.basicChart
-    this.filters = filter
+
 exports[name] = angular.module name, []
   .component name,
     template: template
